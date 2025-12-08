@@ -24,13 +24,13 @@ const NewsroomSection = () => {
   };
 
   return (
-    <section id="newsroom" className="section-padding bg-secondary text-secondary-foreground">
-      <div className="container mx-auto">
+    <section id="newsroom" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-secondary text-secondary-foreground min-h-screen">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-secondary-foreground">Newsroom</span>
-          </h2>
+          </h1>
           <p className="text-secondary-foreground/70 max-w-2xl mx-auto text-lg">
             Stay updated with the latest announcements and events from MUSTSO.
           </p>
@@ -105,7 +105,7 @@ const NewsroomSection = () => {
             <Card
               key={item.id}
               className="bg-secondary-foreground/5 border-secondary-foreground/10 card-hover animate-fade-up opacity-0"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
             >
               <CardHeader>
                 <div className="flex items-center gap-2 text-sm text-secondary-foreground/60 mb-2">

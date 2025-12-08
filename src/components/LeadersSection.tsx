@@ -29,13 +29,13 @@ const LeadersSection = () => {
     : ministriesWithLeaders.filter((m) => m.id === selectedMinistry);
 
   return (
-    <section id="contacts" className="section-padding bg-muted">
-      <div className="container mx-auto">
+    <section id="contacts" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-muted min-h-screen">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Our <span className="gradient-text">Leaders</span>
-          </h2>
+          </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Meet the dedicated leaders serving in various MUSTSO ministries.
           </p>
@@ -70,7 +70,7 @@ const LeadersSection = () => {
             <div
               key={ministry.id}
               className="animate-fade-up opacity-0"
-              style={{ animationDelay: `${mIndex * 0.1}s` }}
+              style={{ animationDelay: `${mIndex * 0.1}s`, animationFillMode: 'forwards' }}
             >
               <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 pb-3 border-b border-border">
                 {ministry.name}
