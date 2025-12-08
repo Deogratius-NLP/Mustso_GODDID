@@ -1,0 +1,138 @@
+import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import mustsoLogo from '@/assets/mustso-logo.png';
+
+const Footer = () => {
+  const quickLinks = [
+    { label: 'Home', href: '#home' },
+    { label: 'Services', href: '#services' },
+    { label: 'Leaders', href: '#contacts' },
+    { label: 'Colleges', href: '#colleges' },
+    { label: 'Newsroom', href: '#newsroom' },
+  ];
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <footer className="bg-primary text-primary-foreground">
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* About */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <img src={mustsoLogo} alt="MUSTSO Logo" className="h-14 w-14" />
+              <div>
+                <h3 className="font-bold text-xl">MUSTSO</h3>
+                <p className="text-primary-foreground/70 text-sm">Mbeya University Students Organization</p>
+              </div>
+            </div>
+            <p className="text-primary-foreground/80 leading-relaxed mb-6 max-w-md">
+              The Mbeya University Students Organization (MUSTSO) is the official student government 
+              dedicated to serving and empowering students through leadership, unity, and innovation 
+              at Mbeya University of Science and Technology.
+            </p>
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-semibold text-lg mb-6">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 mt-0.5 text-primary-foreground/70" />
+                <span className="text-primary-foreground/70">
+                  Mbeya University of Science and Technology,<br />
+                  P.O. Box 131, Mbeya, Tanzania
+                </span>
+              </li>
+              <li>
+                <a
+                  href="tel:+255252502381"
+                  className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  +255 252 502 381
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:mustso@must.ac.tz"
+                  className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  mustso@must.ac.tz
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-primary-foreground/60 text-sm text-center md:text-left">
+              © {new Date().getFullYear()} MUSTSO - Mbeya University Students Organization. All rights reserved.
+            </p>
+            <p className="text-primary-foreground/60 text-sm">
+              Serving students with excellence
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
