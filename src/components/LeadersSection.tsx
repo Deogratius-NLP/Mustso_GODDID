@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, User } from 'lucide-react';
+import { Phone, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import mustsoData from '@/data/mustsoData.json';
@@ -8,7 +8,7 @@ interface Leader {
   title: string;
   name: string;
   phone: string;
-  email: string;
+  image?: string;
 }
 
 interface Ministry {
@@ -84,9 +84,19 @@ const LeadersSection = () => {
                   >
                     <CardContent className="p-4 text-center">
                       {/* Avatar */}
-                      <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-accent flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                        <User className="w-8 h-8 text-accent-foreground group-hover:text-primary-foreground transition-colors duration-300" />
-                      </div>
+                      {leader.image ? (
+                        <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-accent group-hover:border-primary transition-colors duration-300">
+                          <img 
+                            src={leader.image} 
+                            alt={leader.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-accent flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                          <User className="w-8 h-8 text-accent-foreground group-hover:text-primary-foreground transition-colors duration-300" />
+                        </div>
+                      )}
 
                       {/* Info */}
                       <h4 className="font-semibold text-card-foreground text-sm mb-1">
@@ -97,22 +107,13 @@ const LeadersSection = () => {
                       </p>
 
                       {/* Contact */}
-                      <div className="space-y-1">
-                        <a
-                          href={`tel:${leader.phone}`}
-                          className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          <Phone className="w-3 h-3" />
-                          {leader.phone}
-                        </a>
-                        <a
-                          href={`mailto:${leader.email}`}
-                          className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors truncate"
-                        >
-                          <Mail className="w-3 h-3" />
-                          <span className="truncate">{leader.email}</span>
-                        </a>
-                      </div>
+                      <a
+                        href={`tel:${leader.phone}`}
+                        className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <Phone className="w-3 h-3" />
+                        {leader.phone}
+                      </a>
                     </CardContent>
                   </Card>
                 ))}
