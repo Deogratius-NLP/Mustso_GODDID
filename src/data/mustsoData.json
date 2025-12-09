@@ -8,11 +8,11 @@
         "Organize and coordinate all educational activities that promote unity in academic matters"
       ],
       "leaders": [
-        { "title": "Minister", "name": "PETRO DANIEL", "phone": "0757232637", "email": "minister.edu@mustso.ac.tz" },
-        { "title": "Deputy Minister", "name": "ATHUMANI MCHUNGA", "phone": "0652573327", "email": "deputy.edu@mustso.ac.tz" },
-        { "title": "Secretary 1", "name": "PRINCE AMANI", "phone": "0757199591", "email": "sec1.edu@mustso.ac.tz" },
-        { "title": "Secretary 2", "name": "FEISAL MSIGWA", "phone": "0789982395", "email": "sec2.edu@mustso.ac.tz" },
-        { "title": "Secretary 3", "name": "GEORGE NDENDYA", "phone": "0710989206", "email": "sec3.edu@mustso.ac.tz" },
-        { "title": "Secretary 4", "name": "WASTARA AMANI", "phone": "0787422996", "email": "sec4.edu@mustso.ac.tz" }
+        { "title": "Minister", "name": "PETRO DANIEL", "phone": "0757232637"},
+        { "title": "Deputy Minister", "name": "ATHUMANI MCHUNGA", "phone": "0652573327"},
+        { "title": "Secretary 1", "name": "PRINCE AMANI", "phone": "0757199591"},
+        { "title": "Secretary 2", "name": "FEISAL MSIGWA", "phone": "0789982395"},
+        { "title": "Secretary 3", "name": "GEORGE NDENDYA", "phone": "0710989206"},
+        { "title": "Secretary 4", "name": "WASTARA AMANI", "phone": "0787422996"}
       ]
     }
