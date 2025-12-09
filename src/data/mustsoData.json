@@ -235,7 +235,6 @@
       "leader": { "name": "Dr. Zachary Mwakaleta", "title": "College Representative", "phone": "0755 666 777" },
       "departments": [
         { "name": "Department of Agronomy and Soil Science", "leader": { "name": "Adam Mwakakela", "phone": "0755 666 778" } },
-        { "name": "Department of Veterinary Medicine and Animal Science", "leader": { "name": "Betty Mwakatuka", "phone": "0755 666 779" } },
         { "name": "Department of Natural Resources", "leader": { "name": "Charles Mwakabeta", "phone": "0755 666 780" } },
         { "name": "Department of Food Science and Technology", "leader": { "name": "Dorothy Mwakabuja", "phone": "0755 666 781" } },
         { "name": "Department of Crop Science and Horticulture", "leader": { "name": "Edward Mwakatela", "phone": "0755 666 782" } }
@@ -245,33 +244,33 @@
   "news": [
     {
       "id": 1,
-      "title": "MUSTSO General Elections 2024",
+      "title": "MUSTSO General Elections 2024/2025",
       "description": "Preparations are underway for the upcoming MUSTSO general elections. All students are encouraged to participate in the democratic process.",
-      "date": "2024-03-15"
+      "date": "2025-03-15"
     },
     {
       "id": 2,
       "title": "Sports Week Announcement",
       "description": "Join us for the annual inter-college sports competition. Register your teams now and represent your college with pride!",
-      "date": "2024-03-10"
+      "date": "2025-03-10"
     },
     {
       "id": 3,
       "title": "HESLB Registration Deadline",
       "description": "All HESLB beneficiaries are reminded to complete their registration before the deadline. Contact the Ministry of Student Loans for assistance.",
-      "date": "2024-03-05"
+      "date": "2025-03-05"
     },
     {
       "id": 4,
       "title": "Environmental Clean-up Campaign",
       "description": "The Ministry of Health invites all students to participate in the campus clean-up drive this Saturday. Let's keep MUST green!",
-      "date": "2024-02-28"
+      "date": "2025-02-28"
     },
     {
       "id": 5,
       "title": "Cultural Day Celebration",
       "description": "Experience the rich diversity of Tanzanian culture at our annual Cultural Day event. Traditional food, music, and performances await!",
-      "date": "2024-02-20"
+      "date": "2025-02-20"
     }
   ]
 }
