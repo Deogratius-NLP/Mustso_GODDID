@@ -236,6 +236,7 @@
       "departments": [
         { "name": "Department of Agronomy and Soil Science", "leader": { "name": "Adam Mwakakela", "phone": "0755 666 778" } },
         { "name": "Department of Natural Resources", "leader": { "name": "Charles Mwakabeta", "phone": "0755 666 780" } },
+        { "name": "Department of Veterinary Medicine and Animal Science", "leader": { "name": "Harun Moshi", "phone": "0755 666 783" } },
         { "name": "Department of Food Science and Technology", "leader": { "name": "Dorothy Mwakabuja", "phone": "0755 666 781" } },
         { "name": "Department of Crop Science and Horticulture", "leader": { "name": "Edward Mwakatela", "phone": "0755 666 782" } }
       ]
