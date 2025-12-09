@@ -32,7 +32,7 @@
         { "title": "Secretary 1", "name": "GLADINESS THADEI", "phone": "0615941626", "email": "sec1.health@mustso.ac.tz" },
         { "title": "Secretary 2", "name": "IDDY ADAM", "phone": "0741851562", "email": "sec2.health@mustso.ac.tz" },
         { "title": "Secretary 3", "name": "GLORY EZEKIEL", "phone": "0794979179", "email": "sec3.health@mustso.ac.tz" },
-        { "title": "Secretary 4", "name": "ISACK WILSON ", "phone": "0743580535", "email": "sec4.health@mustso.ac.tz" }
+        { "title": "Secretary 4", "name": "ISACK WILSON", "phone": "0743580535", "email": "sec4.health@mustso.ac.tz" }
       ]
     },
     {
@@ -47,7 +47,7 @@
         { "title": "Minister", "name": "ALFRED CHAMPION", "phone": "0782744820", "email": "minister.legal@mustso.ac.tz" },
         { "title": "Deputy Minister", "name": "ELIAH SESHAHU", "phone": "0742472054", "email": "deputy.legal@mustso.ac.tz" },
         { "title": "Secretary 1", "name": "ZAINABU MOHAMED", "phone": "0741740910", "email": "sec1.legal@mustso.ac.tz" },
-        { "title": "Secretary 2", "name": " GLORY YUSUPH", "phone": "0793950311", "email": "sec2.legal@mustso.ac.tz" },
+        { "title": "Secretary 2", "name": "GLORY YUSUPH", "phone": "0793950311", "email": "sec2.legal@mustso.ac.tz" },
         { "title": "Secretary 3", "name": "MICHAEL NDANDU", "phone": "0755124776", "email": "sec3.legal@mustso.ac.tz" },
         { "title": "Secretary 4", "name": "IBRAHIM SALIM", "phone": "0676277687", "email": "sec4.legal@mustso.ac.tz" }
       ]
@@ -131,7 +131,7 @@
       "leaders": [
         { "title": "Deputy Minister", "name": "MESHACK SHAYO", "phone": "0613942003", "email": "minister.defense@mustso.ac.tz" },
         { "title": "Deputy Minister", "name": "SIMON LAWRENCE", "phone": "0685348340", "email": "deputy.defense@mustso.ac.tz" },
-        { "title": "Secretary 1", "name": " CLAZIA LUCAS", "phone": "0781031554", "email": "sec1.defense@mustso.ac.tz" },
+        { "title": "Secretary 1", "name": "CLAZIA LUCAS", "phone": "0781031554", "email": "sec1.defense@mustso.ac.tz" },
         { "title": "Secretary 2", "name": "JENSEN KAYOMBO", "phone": "0659243436", "email": "sec2.defense@mustso.ac.tz" },
         { "title": "Secretary 3", "name": "JONATHAN NYINGI", "phone": "0740299217", "email": "sec3.defense@mustso.ac.tz" },
         { "title": "Secretary 4", "name": "NASMA AYOUB", "phone": "0753105280", "email": "sec4.defense@mustso.ac.tz" }
