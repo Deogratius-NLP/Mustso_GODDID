@@ -81,7 +81,9 @@ const LeadersSection = () => {
         <div className="space-y-12">
           {filteredMinistries.map((ministry, mIndex) => {
             const minister = ministry.leaders.find(l => isMinister(l.title));
-            const otherLeaders = ministry.leaders.filter(l => !isMinister(l.title));
+            // If no minister, use the first deputy/other leader as the featured leader
+            const featuredLeader = minister || ministry.leaders[0];
+            const otherLeaders = ministry.leaders.filter(l => l !== featuredLeader);
 
             return (
               <div
@@ -93,8 +95,8 @@ const LeadersSection = () => {
                   {ministry.name}
                 </h3>
 
-                {/* Minister - Large Profile Card with Image */}
-                {minister && (
+                {/* Featured Leader - Large Profile Card with Image */}
+                {featuredLeader && (
                   <Card className="mb-6 profile-card">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-6">
@@ -102,23 +104,23 @@ const LeadersSection = () => {
                         <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
                           <img 
                             src={leaderImages[mIndex % leaderImages.length]} 
-                            alt={minister.name}
+                            alt={featuredLeader.name}
                             className="w-full h-full object-cover"
                           />
                         </div>
                         <div>
                           <p className="text-sm text-primary font-semibold mb-1">
-                            {minister.title}
+                            {featuredLeader.title}
                           </p>
                           <h4 className="text-xl md:text-2xl font-bold text-card-foreground mb-2">
-                            {minister.name}
+                            {featuredLeader.name}
                           </h4>
                           <a
-                            href={`tel:${minister.phone}`}
+                            href={`tel:${featuredLeader.phone}`}
                             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                           >
                             <Phone className="w-4 h-4" />
-                            {minister.phone}
+                            {featuredLeader.phone}
                           </a>
                         </div>
                       </div>
