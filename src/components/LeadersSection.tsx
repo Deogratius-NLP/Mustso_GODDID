@@ -4,6 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import mustsoData from '@/data/mustsoData.json';
 
+// Leader images
+import leaderImage1 from '@/assets/leader-1.png';
+import leaderImage2 from '@/assets/leader-2.png';
+import leaderImage3 from '@/assets/leader-3.png';
+import leaderImage4 from '@/assets/leader-4.png';
+
+const leaderImages = [leaderImage1, leaderImage2, leaderImage3, leaderImage4];
+
 interface Leader {
   title: string;
   name: string;
@@ -90,20 +98,14 @@ const LeadersSection = () => {
                   <Card className="mb-6 profile-card">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-6">
-                        {/* Large Image Placeholder */}
-                        {minister.image ? (
-                          <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
-                            <img 
-                              src={minister.image} 
-                              alt={minister.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
-                            <User className="w-12 h-12 md:w-16 md:h-16 text-primary-foreground" />
-                          </div>
-                        )}
+                        {/* Large Image - Uses imported images */}
+                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
+                          <img 
+                            src={leaderImages[mIndex % leaderImages.length]} 
+                            alt={minister.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <div>
                           <p className="text-sm text-primary font-semibold mb-1">
                             {minister.title}
