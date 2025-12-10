@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Image } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
 
+interface NewsItem {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  image?: string;
+}
+
 const NewsroomSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const news = mustsoData.news;
+  const news = mustsoData.news as NewsItem[];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,9 +44,9 @@ const NewsroomSection = () => {
           </p>
         </div>
 
-        {/* Hero Carousel */}
-        <div className="relative max-w-4xl mx-auto mb-16">
-          <div className="overflow-hidden rounded-2xl bg-secondary-foreground/5 backdrop-blur-sm">
+        {/* Hero Carousel with Images */}
+        <div className="relative max-w-5xl mx-auto mb-16">
+          <div className="overflow-hidden rounded-2xl">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -46,19 +54,38 @@ const NewsroomSection = () => {
               {news.map((item) => (
                 <div
                   key={item.id}
-                  className="w-full flex-shrink-0 p-8 md:p-12"
+                  className="w-full flex-shrink-0"
                 >
-                  <div className="text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm mb-6">
-                      <Calendar className="w-4 h-4" />
-                      {item.date}
+                  <div className="grid md:grid-cols-2 gap-0">
+                    {/* Image Section */}
+                    <div className="relative h-64 md:h-80 bg-secondary-foreground/10 overflow-hidden">
+                      {item.image ? (
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+                          <Image className="w-16 h-16 text-secondary-foreground/30" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-secondary/80 md:block hidden" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-secondary-foreground mb-4">
-                      {item.title}
-                    </h3>
-                    <p className="text-secondary-foreground/70 text-lg max-w-2xl mx-auto">
-                      {item.description}
-                    </p>
+                    
+                    {/* Content Section */}
+                    <div className="p-6 md:p-8 bg-secondary-foreground/5 flex flex-col justify-center">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm mb-4 w-fit">
+                        <Calendar className="w-4 h-4" />
+                        {item.date}
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-secondary-foreground mb-3">
+                        {item.title}
+                      </h3>
+                      <p className="text-secondary-foreground/70 line-clamp-3">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -99,23 +126,37 @@ const NewsroomSection = () => {
           </div>
         </div>
 
-        {/* News Cards Grid */}
+        {/* News Cards Grid with Images */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item, index) => (
             <Card
               key={item.id}
-              className="bg-secondary-foreground/5 border-secondary-foreground/10 card-hover animate-fade-up opacity-0"
+              className="bg-secondary-foreground/5 border-secondary-foreground/10 card-hover animate-fade-up opacity-0 overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
             >
-              <CardHeader>
+              {/* Card Image */}
+              <div className="relative h-40 bg-secondary-foreground/10">
+                {item.image ? (
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+                    <Image className="w-10 h-10 text-secondary-foreground/30" />
+                  </div>
+                )}
+              </div>
+              <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-sm text-secondary-foreground/60 mb-2">
                   <Calendar className="w-4 h-4" />
                   {item.date}
                 </div>
-                <CardTitle className="text-secondary-foreground">{item.title}</CardTitle>
+                <CardTitle className="text-secondary-foreground text-lg">{item.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-secondary-foreground/70">
+                <CardDescription className="text-secondary-foreground/70 line-clamp-2">
                   {item.description}
                 </CardDescription>
               </CardContent>

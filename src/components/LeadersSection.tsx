@@ -28,6 +28,11 @@ const LeadersSection = () => {
     ? ministriesWithLeaders
     : ministriesWithLeaders.filter((m) => m.id === selectedMinistry);
 
+  // Check if leader is a Minister (main position with image)
+  const isMinister = (title: string) => {
+    return title.toLowerCase() === 'minister';
+  };
+
   return (
     <section id="contacts" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-muted min-h-screen">
       <div className="container mx-auto px-4">
@@ -66,60 +71,94 @@ const LeadersSection = () => {
 
         {/* Leaders Grid */}
         <div className="space-y-12">
-          {filteredMinistries.map((ministry, mIndex) => (
-            <div
-              key={ministry.id}
-              className="animate-fade-up opacity-0"
-              style={{ animationDelay: `${mIndex * 0.1}s`, animationFillMode: 'forwards' }}
-            >
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 pb-3 border-b border-border">
-                {ministry.name}
-              </h3>
+          {filteredMinistries.map((ministry, mIndex) => {
+            const minister = ministry.leaders.find(l => isMinister(l.title));
+            const otherLeaders = ministry.leaders.filter(l => !isMinister(l.title));
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-                {ministry.leaders.map((leader, lIndex) => (
-                  <Card
-                    key={lIndex}
-                    className="profile-card group"
-                  >
-                    <CardContent className="p-4 text-center">
-                      {/* Avatar */}
-                      {leader.image ? (
-                        <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-accent group-hover:border-primary transition-colors duration-300">
-                          <img 
-                            src={leader.image} 
-                            alt={leader.name}
-                            className="w-full h-full object-cover"
-                          />
+            return (
+              <div
+                key={ministry.id}
+                className="animate-fade-up opacity-0"
+                style={{ animationDelay: `${mIndex * 0.1}s`, animationFillMode: 'forwards' }}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 pb-3 border-b border-border">
+                  {ministry.name}
+                </h3>
+
+                {/* Minister - Large Profile Card with Image */}
+                {minister && (
+                  <Card className="mb-6 profile-card">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-6">
+                        {/* Large Image Placeholder */}
+                        {minister.image ? (
+                          <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
+                            <img 
+                              src={minister.image} 
+                              alt={minister.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+                            <User className="w-12 h-12 md:w-16 md:h-16 text-primary-foreground" />
+                          </div>
+                        )}
+                        <div>
+                          <p className="text-sm text-primary font-semibold mb-1">
+                            {minister.title}
+                          </p>
+                          <h4 className="text-xl md:text-2xl font-bold text-card-foreground mb-2">
+                            {minister.name}
+                          </h4>
+                          <a
+                            href={`tel:${minister.phone}`}
+                            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Phone className="w-4 h-4" />
+                            {minister.phone}
+                          </a>
                         </div>
-                      ) : (
-                        <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-accent flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                          <User className="w-8 h-8 text-accent-foreground group-hover:text-primary-foreground transition-colors duration-300" />
-                        </div>
-                      )}
-
-                      {/* Info */}
-                      <h4 className="font-semibold text-card-foreground text-sm mb-1">
-                        {leader.name}
-                      </h4>
-                      <p className="text-xs text-primary font-medium mb-3">
-                        {leader.title}
-                      </p>
-
-                      {/* Contact */}
-                      <a
-                        href={`tel:${leader.phone}`}
-                        className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Phone className="w-3 h-3" />
-                        {leader.phone}
-                      </a>
+                      </div>
                     </CardContent>
                   </Card>
-                ))}
+                )}
+
+                {/* Deputy Ministers & Secretaries - Text Only */}
+                {otherLeaders.length > 0 && (
+                  <div className="bg-card rounded-lg border p-4">
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide">
+                      Ministry Team
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {otherLeaders.map((leader, lIndex) => (
+                        <div
+                          key={lIndex}
+                          className="flex items-center justify-between p-3 rounded-lg bg-muted hover:bg-accent transition-colors"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="font-medium text-card-foreground text-sm truncate">
+                              {leader.name}
+                            </p>
+                            <p className="text-xs text-primary">
+                              {leader.title}
+                            </p>
+                          </div>
+                          <a
+                            href={`tel:${leader.phone}`}
+                            className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-2"
+                          >
+                            <Phone className="w-3 h-3" />
+                            <span className="hidden sm:inline">{leader.phone}</span>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
