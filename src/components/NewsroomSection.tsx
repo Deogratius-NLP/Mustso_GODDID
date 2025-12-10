@@ -4,6 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
 
+// News images
+import newsImage1 from '@/assets/news-1.png';
+import newsImage2 from '@/assets/news-2.png';
+import newsImage3 from '@/assets/news-3.png';
+
+const newsImages = [newsImage1, newsImage2, newsImage3];
+
 interface NewsItem {
   id: number;
   title: string;
@@ -59,17 +66,11 @@ const NewsroomSection = () => {
                   <div className="grid md:grid-cols-2 gap-0">
                     {/* Image Section */}
                     <div className="relative h-64 md:h-80 bg-secondary-foreground/10 overflow-hidden">
-                      {item.image ? (
-                        <img 
-                          src={item.image} 
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-                          <Image className="w-16 h-16 text-secondary-foreground/30" />
-                        </div>
-                      )}
+                      <img 
+                        src={newsImages[item.id - 1] || newsImages[item.id % newsImages.length]} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-secondary/80 md:block hidden" />
                     </div>
                     
@@ -136,17 +137,11 @@ const NewsroomSection = () => {
             >
               {/* Card Image */}
               <div className="relative h-40 bg-secondary-foreground/10">
-                {item.image ? (
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-                    <Image className="w-10 h-10 text-secondary-foreground/30" />
-                  </div>
-                )}
+                <img 
+                  src={newsImages[index % newsImages.length]} 
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-sm text-secondary-foreground/60 mb-2">

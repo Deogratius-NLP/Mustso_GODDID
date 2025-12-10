@@ -5,6 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import mustsoData from '@/data/mustsoData.json';
 
+// Leader images - reuse for college leaders
+import leaderImage1 from '@/assets/leader-1.png';
+import leaderImage2 from '@/assets/leader-2.png';
+import leaderImage3 from '@/assets/leader-3.png';
+import leaderImage4 from '@/assets/leader-4.png';
+
+const leaderImages = [leaderImage1, leaderImage2, leaderImage3, leaderImage4];
+
 interface CollegeLeader {
   name: string;
   title: string;
@@ -97,20 +105,14 @@ const CollegeSection = () => {
                   {college.leader && college.leader.name && (
                     <div className="mt-4 p-4 rounded-lg bg-accent">
                       <div className="flex items-center gap-4">
-                        {/* Large Image Placeholder */}
-                        {college.leader.image ? (
-                          <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
-                            <img 
-                              src={college.leader.image} 
-                              alt={college.leader.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-20 h-20 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
-                            <User className="w-10 h-10 text-primary-foreground" />
-                          </div>
-                        )}
+                        {/* Large Image - Uses imported images */}
+                        <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
+                          <img 
+                            src={leaderImages[index % leaderImages.length]} 
+                            alt={college.leader.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <div className="flex-1">
                           <h4 className="font-bold text-accent-foreground text-lg">
                             {college.leader.name}
