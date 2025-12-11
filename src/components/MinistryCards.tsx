@@ -1,8 +1,16 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, BookOpen, Heart, Scale, Users, Wallet, Trophy, Megaphone, Shield, Building, GraduationCap } from 'lucide-react';
+import { ChevronDown, ChevronUp, BookOpen, Heart, Scale, Users, Wallet, Trophy, Megaphone, Shield, Building, GraduationCap, Phone } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
+
+// Import leader images
+import leader1 from '@/assets/leader-1.png';
+import leader2 from '@/assets/leader-2.png';
+import leader3 from '@/assets/leader-3.png';
+import leader4 from '@/assets/leader-4.png';
+
+const leaderImages = [leader1, leader2, leader3, leader4];
 
 const iconMap: Record<string, React.ReactNode> = {
   education: <BookOpen className="h-8 w-8" />,
@@ -15,6 +23,10 @@ const iconMap: Record<string, React.ReactNode> = {
   defense_security_disaster: <Shield className="h-8 w-8" />,
   infrastructure_accommodation: <Building className="h-8 w-8" />,
   student_loans: <GraduationCap className="h-8 w-8" />,
+};
+
+const isMinister = (title: string) => {
+  return title.toLowerCase() === 'minister';
 };
 
 const MinistryCards = () => {
@@ -39,64 +51,126 @@ const MinistryCards = () => {
 
         {/* Ministry Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mustsoData.ministries.map((ministry, index) => (
-            <Card
-              key={ministry.id}
-              className="card-hover overflow-hidden animate-fade-up opacity-0"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-accent text-accent-foreground">
-                    {iconMap[ministry.id] || <BookOpen className="h-8 w-8" />}
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg leading-tight text-card-foreground">
-                      {ministry.name}
-                    </CardTitle>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent>
-                <CardDescription className="text-muted-foreground mb-4">
-                  {ministry.summary}
-                </CardDescription>
+          {mustsoData.ministries.map((ministry, index) => {
+            const minister = ministry.leaders.find(l => isMinister(l.title));
+            const featuredLeader = minister || ministry.leaders[0];
+            const otherLeaders = ministry.leaders.filter(l => l !== featuredLeader);
 
-                {/* Expandable Functions */}
-                {expandedId === ministry.id && (
-                  <div className="mt-4 pt-4 border-t border-border animate-fade-in">
-                    <h4 className="font-semibold text-sm text-foreground mb-3">Key Functions:</h4>
-                    <ul className="space-y-2">
-                      {ministry.functions.map((func, i) => (
-                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {func}
-                        </li>
-                      ))}
-                    </ul>
+            return (
+              <Card
+                key={ministry.id}
+                className="card-hover overflow-hidden animate-fade-up opacity-0"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-accent text-accent-foreground">
+                      {iconMap[ministry.id] || <BookOpen className="h-8 w-8" />}
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-lg leading-tight text-card-foreground">
+                        {ministry.name}
+                      </CardTitle>
+                    </div>
                   </div>
-                )}
+                </CardHeader>
+                
+                <CardContent>
+                  <CardDescription className="text-muted-foreground mb-4">
+                    {ministry.summary}
+                  </CardDescription>
 
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleExpanded(ministry.id)}
-                  className="w-full mt-4 text-primary hover:text-primary hover:bg-accent"
-                >
-                  {expandedId === ministry.id ? (
-                    <>
-                      Show Less <ChevronUp className="ml-2 h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      View Details <ChevronDown className="ml-2 h-4 w-4" />
-                    </>
+                  {/* Expandable Content */}
+                  {expandedId === ministry.id && (
+                    <div className="mt-4 pt-4 border-t border-border animate-fade-in space-y-6">
+                      {/* Key Functions */}
+                      <div>
+                        <h4 className="font-semibold text-sm text-foreground mb-3">Key Functions:</h4>
+                        <ul className="space-y-2">
+                          {ministry.functions.map((func, i) => (
+                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                              {func}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Featured Leader (Minister or First Deputy) */}
+                      {featuredLeader && (
+                        <div className="bg-accent/50 rounded-xl p-4">
+                          <div className="flex items-center gap-4">
+                            <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
+                              <img 
+                                src={leaderImages[index % leaderImages.length]} 
+                                alt={featuredLeader.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div>
+                              <p className="text-xs text-primary font-semibold mb-1">
+                                {featuredLeader.title}
+                              </p>
+                              <h5 className="text-base font-bold text-card-foreground mb-1">
+                                {featuredLeader.name}
+                              </h5>
+                              <a
+                                href={`tel:${featuredLeader.phone}`}
+                                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                              >
+                                <Phone className="w-3 h-3" />
+                                {featuredLeader.phone}
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Other Leaders - Text Only */}
+                      {otherLeaders.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-sm text-foreground mb-3">Other Leaders:</h4>
+                          <div className="space-y-2">
+                            {otherLeaders.map((leader, lIndex) => (
+                              <div key={lIndex} className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
+                                <div>
+                                  <p className="text-sm font-medium text-card-foreground">{leader.name}</p>
+                                  <p className="text-xs text-muted-foreground">{leader.title}</p>
+                                </div>
+                                <a
+                                  href={`tel:${leader.phone}`}
+                                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                >
+                                  {leader.phone}
+                                </a>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   )}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => toggleExpanded(ministry.id)}
+                    className="w-full mt-4 text-primary hover:text-primary hover:bg-accent"
+                  >
+                    {expandedId === ministry.id ? (
+                      <>
+                        Show Less <ChevronUp className="ml-2 h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        View Details <ChevronDown className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

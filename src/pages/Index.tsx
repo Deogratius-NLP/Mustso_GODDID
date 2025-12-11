@@ -2,12 +2,12 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import MinistryCards from '@/components/MinistryCards';
-import LeadersSection from '@/components/LeadersSection';
 import CollegeSection from '@/components/CollegeSection';
 import NewsroomSection from '@/components/NewsroomSection';
+import PastLeadersSection from '@/components/PastLeadersSection';
 import Footer from '@/components/Footer';
 
-type ActiveSection = 'home' | 'contacts' | 'colleges' | 'newsroom';
+type ActiveSection = 'home' | 'colleges' | 'newsroom' | 'pastleaders';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<ActiveSection>('home');
@@ -27,9 +27,9 @@ const Index = () => {
             <MinistryCards />
           </>
         )}
-        {activeSection === 'contacts' && <LeadersSection />}
         {activeSection === 'colleges' && <CollegeSection />}
         {activeSection === 'newsroom' && <NewsroomSection />}
+        {activeSection === 'pastleaders' && <PastLeadersSection />}
       </main>
       <Footer activeSection={activeSection} onNavigate={handleNavigation} />
     </div>
