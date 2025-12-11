@@ -55,7 +55,7 @@
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(153 78% 17%), hsl(221 75% 15%));
-    --gradient-hero: linear-gradient(180deg, hsl(221 75% 15% / 0.95), hsl(153 78% 17% / 0.9));
+    --gradient-hero: linear-gradient(180deg, hsl(221 75% 15% / 0.7), hsl(153 78% 17% / 0.6));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 97%));
     
     /* Shadows */
