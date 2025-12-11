@@ -62,56 +62,58 @@ const MinistryCards = () => {
                 className="card-hover overflow-hidden animate-fade-up opacity-0"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardHeader className="pb-2">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-accent text-accent-foreground">
-                      {iconMap[ministry.id] || <BookOpen className="h-8 w-8" />}
+                {/* Ministry Title Header */}
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-accent text-accent-foreground">
+                      {iconMap[ministry.id] || <BookOpen className="h-6 w-6" />}
                     </div>
-                    <div className="flex-1">
+                    <div>
                       <CardTitle className="text-lg leading-tight text-card-foreground">
                         {ministry.name}
                       </CardTitle>
-                      <CardDescription className="text-muted-foreground text-sm mt-1">
+                      <CardDescription className="text-muted-foreground text-xs mt-0.5">
                         {ministry.leaders.length} Leaders
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 
-                <CardContent>
-                  {/* Featured Leader - Visible at first glance */}
+                <CardContent className="pt-0">
+                  {/* Large Featured Leader Image */}
                   {featuredLeader && (
-                    <div className="bg-accent/50 rounded-xl p-4 mb-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
-                          <img 
-                            src={leaderImages[index % leaderImages.length]} 
-                            alt={featuredLeader.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h5 className="text-base font-bold text-card-foreground">
-                            {featuredLeader.name}
-                          </h5>
-                          <p className="text-xs text-primary font-semibold">
-                            {featuredLeader.title}
-                          </p>
-                          <a
-                            href={`tel:${featuredLeader.phone}`}
-                            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            <Phone className="w-3 h-3" />
-                            {featuredLeader.phone}
-                          </a>
-                        </div>
+                    <div className="space-y-4">
+                      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
+                        <img 
+                          src={leaderImages[index % leaderImages.length]} 
+                          alt={featuredLeader.name}
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                      </div>
+                      
+                      {/* Leader Details Below Image */}
+                      <div className="text-center bg-accent/40 rounded-xl py-4 px-3">
+                        <h5 className="text-lg font-bold text-card-foreground">
+                          {featuredLeader.name}
+                        </h5>
+                        <p className="text-sm text-primary font-semibold mt-1">
+                          {featuredLeader.title}
+                        </p>
+                        <a
+                          href={`tel:${featuredLeader.phone}`}
+                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mt-2"
+                        >
+                          <Phone className="w-4 h-4" />
+                          {featuredLeader.phone}
+                        </a>
                       </div>
                     </div>
                   )}
 
                   {/* Expandable Content */}
                   {expandedId === ministry.id && (
-                    <div className="pt-4 border-t border-border animate-fade-in space-y-6">
+                    <div className="pt-4 border-t border-border animate-fade-in space-y-6 mt-4">
                       {/* Ministry Summary */}
                       <p className="text-sm text-muted-foreground">{ministry.summary}</p>
                       
