@@ -1,16 +1,9 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, BookOpen, Heart, Scale, Users, Wallet, Trophy, Megaphone, Shield, Building, GraduationCap, Phone } from 'lucide-react';
+import { ChevronDown, ChevronUp, BookOpen, Heart, Scale, Users, Wallet, Trophy, Megaphone, Shield, Building, GraduationCap, Phone, Mail } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
-
-// Import leader images
-import leader1 from '@/assets/leader-1.png';
-import leader2 from '@/assets/leader-2.png';
-import leader3 from '@/assets/leader-3.png';
-import leader4 from '@/assets/leader-4.png';
-
-const leaderImages = [leader1, leader2, leader3, leader4];
+import leaderPlaceholder from '@/assets/leader-placeholder.png';
 
 const iconMap: Record<string, React.ReactNode> = {
   education: <BookOpen className="h-8 w-8" />,
@@ -83,13 +76,13 @@ const MinistryCards = () => {
                   {/* Large Featured Leader Image */}
                   {featuredLeader && (
                     <div className="space-y-4">
-                      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
+                      <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
                         <img 
-                          src={leaderImages[index % leaderImages.length]} 
+                          src={leaderPlaceholder} 
                           alt={featuredLeader.name}
                           className="w-full h-full object-cover object-top"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                       </div>
                       
                       {/* Leader Details Below Image */}
@@ -100,13 +93,15 @@ const MinistryCards = () => {
                         <p className="text-sm text-primary font-semibold mt-1">
                           {featuredLeader.title}
                         </p>
-                        <a
-                          href={`tel:${featuredLeader.phone}`}
-                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mt-2"
-                        >
-                          <Phone className="w-4 h-4" />
-                          {featuredLeader.phone}
-                        </a>
+                        <div className="flex flex-col items-center gap-1 mt-2">
+                          <a
+                            href={`tel:${featuredLeader.phone}`}
+                            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Phone className="w-4 h-4" />
+                            {featuredLeader.phone}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   )}

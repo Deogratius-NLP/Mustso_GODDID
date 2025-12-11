@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
+import TopExecutivesSection from '@/components/TopExecutivesSection';
 import MinistryCards from '@/components/MinistryCards';
 import CollegeSection from '@/components/CollegeSection';
 import NewsroomSection from '@/components/NewsroomSection';
@@ -24,6 +25,7 @@ const Index = () => {
         {activeSection === 'home' && (
           <>
             <HeroSection />
+            <TopExecutivesSection />
             <MinistryCards />
           </>
         )}
