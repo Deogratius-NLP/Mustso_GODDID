@@ -1,4 +1,11 @@
 {
+  "executives": [
+    { "id": 1, "name": "Hon. Salim Msabaha", "title": "President" },
+    { "id": 2, "name": "Hon. Amina Juma", "title": "Vice President" },
+    { "id": 3, "name": "Hon. Benedict Mwita", "title": "Prime Minister" },
+    { "id": 4, "name": "Hon. Grace Lwanga", "title": "Permanent Secretary - President's Office" },
+    { "id": 5, "name": "Hon. David Mwakalesi", "title": "Permanent Secretary - Prime Minister's Office" }
+  ],
   "ministries": [
     {
       "id": "education",

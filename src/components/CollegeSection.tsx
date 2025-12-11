@@ -1,17 +1,10 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, User, Phone, Building2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Phone, Building2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import mustsoData from '@/data/mustsoData.json';
-
-// Leader images - reuse for college leaders
-import leaderImage1 from '@/assets/leader-1.png';
-import leaderImage2 from '@/assets/leader-2.png';
-import leaderImage3 from '@/assets/leader-3.png';
-import leaderImage4 from '@/assets/leader-4.png';
-
-const leaderImages = [leaderImage1, leaderImage2, leaderImage3, leaderImage4];
+import leaderPlaceholder from '@/assets/leader-placeholder.png';
 
 interface CollegeLeader {
   name: string;
@@ -104,13 +97,13 @@ const CollegeSection = () => {
                   {/* College Leader - Large Image Card */}
                   {college.leader && college.leader.name && (
                     <div className="mt-4 p-4 rounded-lg bg-accent">
-                      <div className="flex items-center gap-4">
-                        {/* Large Image - Uses imported images */}
-                        <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
+                      <div className="flex items-start gap-4">
+                        {/* Large Image */}
+                        <div className="w-24 h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
                           <img 
-                            src={leaderImages[index % leaderImages.length]} 
+                            src={leaderPlaceholder} 
                             alt={college.leader.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                           />
                         </div>
                         <div className="flex-1">
