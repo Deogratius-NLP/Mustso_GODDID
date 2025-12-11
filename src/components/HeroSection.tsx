@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
-import heroBg1 from '@/assets/hero-bg.jpg';
-import heroBg2 from '@/assets/hero-bg-2.jpg';
-import heroBg3 from '@/assets/hero-bg-3.jpg';
+import heroBg4 from '@/assets/hero-bg-4.jpg';
+import heroBg5 from '@/assets/hero-bg-5.jpg';
+import heroBg6 from '@/assets/hero-bg-6.jpg';
+import heroBg7 from '@/assets/hero-bg-7.jpg';
 
 const heroSlides = [
-  { image: heroBg1, alt: 'University Campus Aerial View' },
-  { image: heroBg2, alt: 'Students on Campus' },
-  { image: heroBg3, alt: 'Graduation Ceremony' },
+  { image: heroBg4, alt: 'MUSTSO Student Leaders' },
+  { image: heroBg5, alt: 'MUST Rukwa Campus College' },
+  { image: heroBg6, alt: 'Dr. Magufuli Library' },
+  { image: heroBg7, alt: 'Students in Laboratory' },
 ];
 
 const HeroSection = () => {
