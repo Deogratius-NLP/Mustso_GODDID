@@ -273,5 +273,20 @@
       "description": "Experience the rich diversity of Tanzanian culture at our annual Cultural Day event. Traditional food, music, and performances await!",
       "date": "2025-02-20"
     }
+  ],
+  "pastLeaders": [
+    { "id": 1, "name": "John Mwakibete", "title": "President" },
+    { "id": 2, "name": "Sarah Kimaro", "title": "Vice President" },
+    { "id": 3, "name": "Michael Ndunguru", "title": "Prime Minister" },
+    { "id": 4, "name": "Grace Mwakasege", "title": "Former Minister - Education" },
+    { "id": 5, "name": "David Mwambungu", "title": "Former Minister - Finance" },
+    { "id": 6, "name": "Rose Mwakajila", "title": "Former Minister - Health" },
+    { "id": 7, "name": "Peter Mwakalinga", "title": "Former Minister - Sports" },
+    { "id": 8, "name": "Anna Mwakibinga", "title": "Former Minister - Legal Affairs" },
+    { "id": 9, "name": "James Mwakasonda", "title": "Former Minister - Defense" },
+    { "id": 10, "name": "Martha Mwakabela", "title": "Former Minister - Infrastructure" },
+    { "id": 11, "name": "Francis Mwakatobe", "title": "Former Minister - Information" },
+    { "id": 12, "name": "Lucy Mwakajanga", "title": "Former Minister - Gender" },
+    { "id": 13, "name": "Robert Mwakalesi", "title": "Former Minister - Student Loans" }
   ]
 }

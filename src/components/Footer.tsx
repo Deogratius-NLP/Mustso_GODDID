@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import mustsoLogo from '@/assets/mustso-logo.png';
 
-type ActiveSection = 'home' | 'contacts' | 'colleges' | 'newsroom';
+type ActiveSection = 'home' | 'colleges' | 'newsroom' | 'pastleaders';
 
 interface FooterProps {
   activeSection: ActiveSection;
@@ -12,9 +12,9 @@ const Footer = ({ onNavigate }: FooterProps) => {
   const quickLinks: { label: string; section: ActiveSection | 'services' }[] = [
     { label: 'Home', section: 'home' },
     { label: 'Services', section: 'services' },
-    { label: 'Leaders', section: 'contacts' },
     { label: 'Colleges', section: 'colleges' },
     { label: 'Newsroom', section: 'newsroom' },
+    { label: 'Past Leaders', section: 'pastleaders' },
   ];
 
   const handleLinkClick = (section: ActiveSection | 'services') => {
