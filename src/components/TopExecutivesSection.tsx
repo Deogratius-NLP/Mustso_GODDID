@@ -11,7 +11,7 @@ const TopExecutivesSection = () => {
   const executives: Executive[] = (mustsoData as any).executives || [];
 
   return (
-    <section className="section-padding bg-secondary">
+    <section className="section-padding relative" style={{ background: 'var(--gradient-executives)' }}>
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
