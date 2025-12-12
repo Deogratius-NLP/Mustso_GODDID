@@ -254,31 +254,36 @@
       "id": 1,
       "title": "MUSTSO General Elections 2024/2025",
       "description": "Preparations are underway for the upcoming MUSTSO general elections. All students are encouraged to participate in the democratic process.",
-      "date": "2025-03-15"
+      "date": "2025-03-15",
+      "image": "news-1.png"
     },
     {
       "id": 2,
       "title": "Sports Week Announcement",
       "description": "Join us for the annual inter-college sports competition. Register your teams now and represent your college with pride!",
-      "date": "2025-03-10"
+      "date": "2025-03-10",
+      "image": "news-2.png"
     },
     {
       "id": 3,
       "title": "HESLB Registration Deadline",
       "description": "All HESLB beneficiaries are reminded to complete their registration before the deadline. Contact the Ministry of Student Loans for assistance.",
-      "date": "2025-03-05"
+      "date": "2025-03-05",
+      "image": "news-3.png"
     },
     {
       "id": 4,
       "title": "Environmental Clean-up Campaign",
       "description": "The Ministry of Health invites all students to participate in the campus clean-up drive this Saturday. Let's keep MUST green!",
-      "date": "2025-02-28"
+      "date": "2025-02-28",
+      "image": "news-1.png"
     },
     {
       "id": 5,
       "title": "Cultural Day Celebration",
       "description": "Experience the rich diversity of Tanzanian culture at our annual Cultural Day event. Traditional food, music, and performances await!",
-      "date": "2025-02-20"
+      "date": "2025-02-20",
+      "image": "news-2.png"
     }
   ],
   "pastLeaders": [

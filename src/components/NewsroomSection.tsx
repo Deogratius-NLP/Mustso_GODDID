@@ -3,7 +3,17 @@ import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
-import leaderPlaceholder from '@/assets/leader-placeholder.png';
+
+// Import news images
+import news1 from '@/assets/news-1.png';
+import news2 from '@/assets/news-2.png';
+import news3 from '@/assets/news-3.png';
+
+const newsImages: Record<string, string> = {
+  'news-1.png': news1,
+  'news-2.png': news2,
+  'news-3.png': news3,
+};
 
 interface NewsItem {
   id: number;
@@ -30,6 +40,13 @@ const NewsroomSection = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + news.length) % news.length);
+  };
+
+  const getNewsImage = (imageName?: string) => {
+    if (imageName && newsImages[imageName]) {
+      return newsImages[imageName];
+    }
+    return news1; // fallback
   };
 
   return (
@@ -61,7 +78,7 @@ const NewsroomSection = () => {
                     {/* Image Section */}
                     <div className="relative h-64 md:h-80 bg-accent overflow-hidden">
                       <img 
-                        src={leaderPlaceholder} 
+                        src={getNewsImage(item.image)} 
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
@@ -132,7 +149,7 @@ const NewsroomSection = () => {
               {/* Card Image */}
               <div className="relative h-40 bg-accent">
                 <img 
-                  src={leaderPlaceholder} 
+                  src={getNewsImage(item.image)} 
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
