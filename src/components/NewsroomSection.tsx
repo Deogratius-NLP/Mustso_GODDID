@@ -50,11 +50,19 @@ const NewsroomSection = () => {
   };
 
   return (
-    <section id="newsroom" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-background min-h-screen">
-      <div className="container mx-auto px-4">
+    <section id="newsroom" className="pt-24 pb-16 md:pt-28 md:pb-20 min-h-screen relative overflow-hidden">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/15 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            Latest Updates
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
             <span className="gradient-text">Newsroom</span>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
@@ -64,7 +72,7 @@ const NewsroomSection = () => {
 
         {/* Hero Carousel with Images */}
         <div className="relative max-w-5xl mx-auto mb-16">
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-2xl shadow-xl ring-1 ring-primary/10">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -76,18 +84,19 @@ const NewsroomSection = () => {
                 >
                   <div className="grid md:grid-cols-2 gap-0">
                     {/* Image Section */}
-                    <div className="relative h-64 md:h-80 bg-accent overflow-hidden">
+                    <div className="relative h-64 md:h-80 overflow-hidden">
                       <img 
                         src={getNewsImage(item.image)} 
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent" />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/80 md:block hidden" />
                     </div>
                     
                     {/* Content Section */}
-                    <div className="p-6 md:p-8 bg-accent/30 flex flex-col justify-center">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm mb-4 w-fit">
+                    <div className="p-6 md:p-8 bg-gradient-to-br from-secondary/20 to-primary/10 flex flex-col justify-center backdrop-blur-sm">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary to-secondary text-primary-foreground text-sm mb-4 w-fit shadow-lg">
                         <Calendar className="w-4 h-4" />
                         {item.date}
                       </div>
@@ -109,7 +118,7 @@ const NewsroomSection = () => {
             variant="ghost"
             size="icon"
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/70 text-foreground rounded-full"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/80 hover:bg-primary text-primary-foreground rounded-full shadow-lg"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -117,7 +126,7 @@ const NewsroomSection = () => {
             variant="ghost"
             size="icon"
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/50 hover:bg-background/70 text-foreground rounded-full"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/80 hover:bg-primary text-primary-foreground rounded-full shadow-lg"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
@@ -128,10 +137,10 @@ const NewsroomSection = () => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? 'bg-primary w-8'
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                    ? 'bg-gradient-to-r from-primary to-secondary w-8'
+                    : 'bg-muted-foreground/30 hover:bg-primary/50 w-2.5'
                 }`}
               />
             ))}
@@ -143,28 +152,35 @@ const NewsroomSection = () => {
           {news.map((item, index) => (
             <Card
               key={item.id}
-              className="card-hover animate-fade-up opacity-0 overflow-hidden"
+              className="group card-hover animate-fade-up opacity-0 overflow-hidden border-0 shadow-lg ring-1 ring-primary/5 hover:ring-primary/20 bg-gradient-to-br from-card to-card/80"
               style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
             >
               {/* Card Image */}
-              <div className="relative h-40 bg-accent">
+              <div className="relative h-44 overflow-hidden">
                 <img 
                   src={getNewsImage(item.image)} 
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-              </div>
-              <CardHeader className="pb-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Calendar className="w-4 h-4" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium">
+                  <Calendar className="w-3 h-3" />
                   {item.date}
                 </div>
-                <CardTitle className="text-foreground text-lg">{item.title}</CardTitle>
+              </div>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-foreground text-lg group-hover:text-primary transition-colors">
+                  {item.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-foreground line-clamp-2">
                   {item.description}
                 </CardDescription>
+                <div className="mt-4 flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                  Read more 
+                  <ChevronRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                </div>
               </CardContent>
             </Card>
           ))}
