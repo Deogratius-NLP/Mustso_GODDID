@@ -95,15 +95,15 @@ const NewsroomSection = () => {
                     </div>
                     
                     {/* Content Section */}
-                    <div className="p-6 md:p-8 bg-gradient-to-br from-secondary/20 to-primary/10 flex flex-col justify-center backdrop-blur-sm">
+                    <div className="p-6 md:p-8 bg-secondary/80 flex flex-col justify-center backdrop-blur-sm">
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary to-secondary text-primary-foreground text-sm mb-4 w-fit shadow-lg">
                         <Calendar className="w-4 h-4" />
                         {item.date}
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                      <h3 className="text-xl md:text-2xl font-bold text-secondary-foreground mb-3">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground line-clamp-3">
+                      <p className="text-secondary-foreground/80 line-clamp-3">
                         {item.description}
                       </p>
                     </div>
@@ -168,19 +168,15 @@ const NewsroomSection = () => {
                   {item.date}
                 </div>
               </div>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-foreground text-lg group-hover:text-primary transition-colors">
+              <CardHeader className="pb-2 transition-colors duration-300 group-hover:bg-secondary/60 rounded-t-md">
+                <CardTitle className="text-foreground text-lg group-hover:text-secondary-foreground transition-colors">
                   {item.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground line-clamp-2">
+              <CardContent className="transition-colors duration-300 group-hover:bg-secondary/60 rounded-b-md">
+                <CardDescription className="text-muted-foreground group-hover:text-secondary-foreground/80 line-clamp-2 transition-colors">
                   {item.description}
                 </CardDescription>
-                <div className="mt-4 flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
-                  Read more 
-                  <ChevronRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                </div>
               </CardContent>
             </Card>
           ))}
