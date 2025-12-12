@@ -168,16 +168,18 @@ const NewsroomSection = () => {
                   {item.date}
                 </div>
               </div>
-              <CardHeader className="pb-2 transition-colors duration-300 group-hover:bg-secondary/60 rounded-t-md">
-                <CardTitle className="text-foreground text-lg group-hover:text-secondary-foreground transition-colors">
-                  {item.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="transition-colors duration-300 group-hover:bg-secondary/60 rounded-b-md">
-                <CardDescription className="text-muted-foreground group-hover:text-secondary-foreground/80 line-clamp-2 transition-colors">
-                  {item.description}
-                </CardDescription>
-              </CardContent>
+              <div className="transition-colors duration-300 group-hover:bg-secondary/60">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-foreground text-lg group-hover:text-secondary-foreground transition-colors">
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-muted-foreground group-hover:text-secondary-foreground/80 line-clamp-2 transition-colors">
+                    {item.description}
+                  </CardDescription>
+                </CardContent>
+              </div>
             </Card>
           ))}
         </div>
