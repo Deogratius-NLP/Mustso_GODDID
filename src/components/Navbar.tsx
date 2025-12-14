@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
 
-type ActiveSection = 'home' | 'colleges' | 'newsroom' | 'pastleaders';
+type ActiveSection = 'home' | 'usrc' | 'judiciary' | 'newsroom' | 'pastleaders';
 
 interface NavbarProps {
   activeSection: ActiveSection;
@@ -13,7 +13,8 @@ interface NavbarProps {
 const navItems: { label: string; section: ActiveSection | 'services' }[] = [
   { label: 'Home', section: 'home' },
   { label: 'Services', section: 'services' },
-  { label: 'College Wise', section: 'colleges' },
+  { label: 'USRC', section: 'usrc' },
+  { label: 'Judiciary', section: 'judiciary' },
   { label: 'Newsroom', section: 'newsroom' },
   { label: 'Past Leaders', section: 'pastleaders' },
 ];
