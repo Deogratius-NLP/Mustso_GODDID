@@ -57,7 +57,8 @@
     --gradient-primary: linear-gradient(135deg, hsl(153 78% 17%), hsl(221 75% 15%));
     --gradient-hero: linear-gradient(180deg, hsl(221 75% 15% / 0.7), hsl(153 78% 17% / 0.6));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 97%));
-    --gradient-executives: linear-gradient(180deg, hsl(221 75% 15% / 0.7), hsl(0 0% 100% / 0.6));
+    --gradient-executives: linear-gradient(180deg, hsl(221 75% 15% / 0.05), hsl(153 78% 17% / 0.05));
+    --gradient-special-reps: linear-gradient(135deg, hsl(153 78% 17% / 0.08), hsl(221 75% 15% / 0.12));
     
     /* Shadows */
     --shadow-sm: 0 2px 8px hsl(221 75% 15% / 0.06);
@@ -174,6 +175,49 @@
   .profile-card:hover {
     box-shadow: var(--shadow-md);
     @apply -translate-y-0.5;
+  }
+
+  /* Animated border glow for leader cards */
+  .animated-border-glow {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 60deg,
+      hsl(153 78% 35%) 120deg,
+      hsl(153 78% 50%) 180deg,
+      hsl(153 78% 35%) 240deg,
+      transparent 300deg,
+      transparent 360deg
+    );
+    animation: rotateBorder 4s linear infinite;
+    opacity: 0.6;
+  }
+
+  .group:hover .animated-border-glow {
+    animation: rotateBorder 2s linear infinite;
+    opacity: 1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 30deg,
+      hsl(153 78% 45%) 90deg,
+      hsl(153 78% 60%) 180deg,
+      hsl(153 78% 45%) 270deg,
+      transparent 330deg,
+      transparent 360deg
+    );
+    filter: drop-shadow(0 0 8px hsl(153 78% 40% / 0.8));
+  }
+
+  @keyframes rotateBorder {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
 

@@ -10,6 +10,7 @@ interface LeaderCardProps {
   showContact?: boolean;
   className?: string;
   animationDelay?: number;
+  showAnimatedBorder?: boolean;
 }
 
 const LeaderCard = ({ 
@@ -19,58 +20,68 @@ const LeaderCard = ({
   email, 
   showContact = true,
   className = '',
-  animationDelay = 0
+  animationDelay = 0,
+  showAnimatedBorder = true
 }: LeaderCardProps) => {
   return (
-    <Card
-      className={`card-hover overflow-hidden animate-fade-up opacity-0 ${className}`}
+    <div
+      className={`relative group animate-fade-up opacity-0 ${className}`}
       style={{ animationDelay: `${animationDelay}s` }}
     >
-      <CardContent className="p-4">
-        {/* Large Image */}
-        <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg mb-4">
-          <img 
-            src={leaderPlaceholder} 
-            alt={name}
-            className="w-full h-full object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+      {/* Animated border container - only for leader cards */}
+      {showAnimatedBorder && (
+        <div className="absolute -inset-[2px] rounded-xl overflow-hidden">
+          <div className="animated-border-glow" />
         </div>
-        
-        {/* Leader Details */}
-        <div className="text-center space-y-2">
-          <h4 className="text-lg font-bold text-card-foreground line-clamp-2">
-            {name}
-          </h4>
-          <p className="text-sm text-primary font-semibold">
-            {title}
-          </p>
+      )}
+      
+      <Card className="relative overflow-hidden bg-card border-0 h-full">
+        <CardContent className="p-4">
+          {/* Large Image */}
+          <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg mb-4">
+            <img 
+              src={leaderPlaceholder} 
+              alt={name}
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          </div>
           
-          {showContact && (phone || email) && (
-            <div className="pt-2 space-y-1">
-              {phone && (
-                <a
-                  href={`tel:${phone}`}
-                  className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  {phone}
-                </a>
-              )}
-              {email && (
-                <a
-                  href={`mailto:${email}`}
-                  className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  {email}
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+          {/* Leader Details */}
+          <div className="text-center space-y-2">
+            <h4 className="text-lg font-bold text-card-foreground line-clamp-2">
+              {name}
+            </h4>
+            <p className="text-sm text-primary font-semibold">
+              {title}
+            </p>
+            
+            {showContact && (phone || email) && (
+              <div className="pt-2 space-y-1">
+                {phone && (
+                  <a
+                    href={`tel:${phone}`}
+                    className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {phone}
+                  </a>
+                )}
+                {email && (
+                  <a
+                    href={`mailto:${email}`}
+                    className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                    {email}
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

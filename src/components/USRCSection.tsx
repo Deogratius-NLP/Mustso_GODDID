@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import mustsoData from '@/data/mustsoData.json';
 import leaderPlaceholder from '@/assets/leader-placeholder.png';
+import LeaderCard from '@/components/LeaderCard';
 
 interface CollegeLeader {
   name: string;
@@ -30,7 +31,19 @@ interface College {
   departments: Department[];
 }
 
-const CollegeSection = () => {
+interface USRCLeader {
+  id: number;
+  name: string;
+  title: string;
+}
+
+interface SpecialRep {
+  id: number;
+  name: string;
+  title: string;
+}
+
+const USRCSection = () => {
   const [openColleges, setOpenColleges] = useState<string[]>([]);
 
   const toggleCollege = (collegeId: string) => {
@@ -42,22 +55,54 @@ const CollegeSection = () => {
   };
 
   const colleges = mustsoData.colleges as College[];
+  const usrcLeaders = (mustsoData as any).usrcLeaders as USRCLeader[] || [];
+  const specialReps = (mustsoData as any).specialRepresentatives as SpecialRep[] || [];
 
   return (
-    <section id="colleges" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-background min-h-screen">
+    <section id="usrc" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-background min-h-screen">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            College <span className="gradient-text">Representatives</span>
+            USRC <span className="gradient-text">Leadership</span>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Student leadership across all colleges and departments at MUST.
+            University Students Representative Council - The voice of all students at MUST.
           </p>
         </div>
 
+        {/* USRC Top Leadership */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Top <span className="gradient-text">Leadership</span>
+            </h2>
+            <p className="text-muted-foreground">USRC Executive Council</p>
+          </div>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+            {usrcLeaders.map((leader, index) => (
+              <LeaderCard
+                key={leader.id}
+                name={leader.name}
+                title={leader.title}
+                showContact={false}
+                animationDelay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* College Representatives Section Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            College <span className="gradient-text">Representatives</span>
+          </h2>
+          <p className="text-muted-foreground">Student leadership across all colleges and departments at MUST.</p>
+        </div>
+
         {/* Colleges Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           {colleges.map((college, index) => (
             <Card
               key={college.id}
@@ -161,9 +206,38 @@ const CollegeSection = () => {
             </Card>
           ))}
         </div>
+
+        {/* Special Representatives Section */}
+        <div className="relative py-16 -mx-4 px-4" style={{ background: 'var(--gradient-special-reps)' }}>
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+          </div>
+          
+          <div className="relative z-10">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Special <span className="gradient-text">Representatives</span>
+              </h2>
+              <p className="text-muted-foreground">Representatives for special student interests and concerns.</p>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+              {specialReps.map((rep, index) => (
+                <LeaderCard
+                  key={rep.id}
+                  name={rep.name}
+                  title={rep.title}
+                  showContact={false}
+                  animationDelay={index * 0.05}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default CollegeSection;
+export default USRCSection;
