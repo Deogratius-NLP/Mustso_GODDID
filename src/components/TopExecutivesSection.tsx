@@ -23,7 +23,7 @@ const TopExecutivesSection = () => {
               key={exec.id}
               name={exec.name}
               title={exec.title}
-              image={imageMap[exec.image] ?? placeholderImg} // auto-resolve
+              image={exec.image || placeholderImg} // auto-resolve
               showContact={false}
               animationDelay={index * 0.1}
             />
