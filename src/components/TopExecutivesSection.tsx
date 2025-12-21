@@ -12,6 +12,13 @@ interface Executive {
   image: string;
 }
 
+const imageMap: Record<string, string> = {
+  "Presda.jpg": Presda,
+  "Vice_presda.jpeg": VicePresda,
+  "godfrey.jpeg": Godfrey,
+  "Venance.png": Venance
+};
+  
 const TopExecutivesSection = () => {
   const executives: Executive[] = (mustsoData as any).executives || [];
 
