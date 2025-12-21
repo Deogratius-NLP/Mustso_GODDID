@@ -11,12 +11,14 @@ import news3 from '@/assets/news-3.png';
 import HESLB from '@/assets/HESLB.png';
 import unichoma from '@/assets/unichoma.png';
 import registeration from '@/assets/registeration.png';
+import dreamFM from '@/assets/dreamFM.png';
 
 const newsImages: Record<string, string> = {
   'news-2.png': news2,
   'HESLB.png': HESLB,
   'unichoma.png': unichoma,
   'registeration.png': registeration,
+  'dreamFM.png': dreamFM,
 };
 
 interface NewsItem {
