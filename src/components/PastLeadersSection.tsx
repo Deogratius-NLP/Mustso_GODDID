@@ -5,6 +5,7 @@ interface PastLeader {
   id: number;
   name: string;
   title: string;
+  image?: string;
 }
 
 const PastLeadersSection = () => {
@@ -30,6 +31,7 @@ const PastLeadersSection = () => {
               key={leader.id}
               name={leader.name}
               title={leader.title}
+              image={leader.image}
               showContact={false}
               animationDelay={index * 0.05}
             />
