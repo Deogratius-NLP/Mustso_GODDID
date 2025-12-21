@@ -45,7 +45,7 @@
         "Organize and coordinate all educational activities that promote unity in academic matters"
       ],
       "leaders": [
-        { "title": "Minister", "name": "PETRO DANIEL", "phone": "0757232637", "email": "petro.education@mustso.ac.tz" },
+        { "title": "Minister", "name": "PETRO DANIEL", "phone": "0757232637", "email": "petro.education@mustso.ac.tz", "image": "/petro_danny.png" },
         { "title": "Deputy Minister 1", "name": "ATHUMANI MCHUNGA", "phone": "0652573327" },
         { "title": "Secretary 1", "name": "PRINCE AMANI", "phone": "0757199591" },
         { "title": "Secretary 2", "name": "FEISAL MSIGWA", "phone": "0789982395" },
@@ -63,7 +63,7 @@
         "Assist sick students by ensuring they get timely medical assistance"
       ],
       "leaders": [
-        { "title": "Minister", "name": "REAGAN JUMA", "phone": "0613859327", "email": "reagan.health@mustso.ac.tz" },
+        { "title": "Minister", "name": "REAGAN JUMA", "phone": "0613859327", "email": "reagan.health@mustso.ac.tz", "image": "/reagan.jpeg" },
         { "title": "Deputy Minister 1", "name": "RAPHAEL KULAGA", "phone": "0767726910" },
         { "title": "Secretary 1", "name": "GLADINESS THADEI", "phone": "0615941626" },
         { "title": "Secretary 2", "name": "IDDY ADAM", "phone": "0741851562" },
@@ -131,7 +131,7 @@
         "Plan, organize and supervise sports and cultural activities"
       ],
       "leaders": [
-        { "title": "Deputy Minister 1", "name": "OLIVO HAULE", "phone": "0620360113" },
+        { "title": "Deputy Minister 1", "name": "OLIVO HAULE", "phone": "0620360113", "image": "/olivo.jpeg" },
         { "title": "Deputy Minister 2", "name": "CHARLES MAJOR", "phone": "0757361910" },
         { "title": "Secretary 1", "name": "DAINES SIMBI", "phone": "0624694818" },
         { "title": "Secretary 2", "name": "DAVID MTOBWA", "phone": "0744339728" },
@@ -165,7 +165,7 @@
         "Advise MUSTSO on all defense and security issues"
       ],
       "leaders": [
-        { "title": "Deputy Minister 1", "name": "MESHACK SHAYO", "phone": "0613942003" },
+        { "title": "Deputy Minister 1", "name": "MESHACK SHAYO", "phone": "0613942003", "image": "/meshack.jpeg" },
         { "title": "Deputy Minister 2", "name": "SIMON LAWRENCE", "phone": "0685348340" },
         { "title": "Secretary 1", "name": "CLAZIA LUCAS", "phone": "0781031554" },
         { "title": "Secretary 2", "name": "JENSEN KAYOMBO", "phone": "0659243436" },
@@ -182,7 +182,7 @@
         "Advise the government on housing, maintenance, power, water services, etc."
       ],
       "leaders": [
-        { "title": "Deputy Minister 1", "name": "GREGORY KIMARIO", "phone": "0688695107" },
+        { "title": "Deputy Minister 1", "name": "GREGORY KIMARIO", "phone": "0688695107", "image": "/miundo.jpg" },
         { "title": "Deputy Minister 2", "name": "GRACA KILEVA", "phone": "0686238170" },
         { "title": "Secretary 1", "name": "CHARLES BIKO", "phone": "0753836432" },
         { "title": "Secretary 2", "name": "ERICA SHUMA", "phone": "0658786307" },
