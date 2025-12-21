@@ -4,6 +4,7 @@ import Presda from '@/assets/Presda.jpg';
 import VicePresda from '@/assets/Vice_presda.jpeg';
 import Godfrey from '@/assets/godfrey.jpeg';
 import Venance from '@/assets/Venance.png';
+import placeholderImg from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
 interface Executive {
   id: number;
