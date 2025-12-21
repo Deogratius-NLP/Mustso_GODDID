@@ -316,18 +316,18 @@
     }
   ],
   "pastLeaders": [
-    { "id": 1, "name": "John Mwakibete", "title": "President", "image": "/hemed 1.jpg" },
-    { "id": 2, "name": "Sarah Kimaro", "title": "Vice President", "image": "/Fausta.jpg" },
-    { "id": 3, "name": "Michael Ndunguru", "title": "Prime Minister", "image": "/pm.jpg" },
-    { "id": 4, "name": "Grace Mwakasege", "title": "Former Minister - Education", "image": "/Petroa.jpg" },
-    { "id": 5, "name": "David Mwambungu", "title": "Former Minister - Finance", "image": "/peteraa.jpg" },
-    { "id": 6, "name": "Rose Mwakajila", "title": "Former Minister - Health", "image": "/afya gwamaka.jpg" },
-    { "id": 7, "name": "Peter Mwakalinga", "title": "Former Minister - Sports", "image": "/Presda.jpg" },
-    { "id": 8, "name": "Anna Mwakibinga", "title": "Former Minister - Legal Affairs", "image": "/Alfreda.jpg" },
-    { "id": 9, "name": "James Mwakasonda", "title": "Former Minister - Defense", "image": "/Ramadhana.jpg" },
-    { "id": 10, "name": "Martha Mwakabela", "title": "Former Minister - Infrastructure", "image": "/Amosa.jpg" },
-    { "id": 11, "name": "Francis Mwakatobe", "title": "Former Minister - Information", "image": "/Lukio.JPG" },
-    { "id": 12, "name": "Lucy Mwakajanga", "title": "Former Minister - Gender", "image": "/Yazidu.jpg" },
-    { "id": 13, "name": "Robert Mwakalesi", "title": "Former Minister - Student Loans", "image": "/Chusa.png" }
+    { "id": 1, "name": "Hemedi Ikoki", "title": "President", "image": "/hemed 1.jpg" },
+    { "id": 2, "name": "Fausta Mroto", "title": "Vice President", "image": "/Fausta.jpg" },
+    { "id": 3, "name": "Thobias Chache", "title": "Prime Minister", "image": "/pm.jpg" },
+    { "id": 4, "name": "Hon. Petro", "title": "Former Minister - Education", "image": "/Petroa.jpg" },
+    { "id": 5, "name": "Hon. Peter", "title": "Former Minister - Finance", "image": "/Peteraa.jpg" },
+    { "id": 6, "name": "Hon. Gwamaka", "title": "Former Minister - Health", "image": "/afya gwamaka.jpg" },
+    { "id": 7, "name": "Hon. Yohana", "title": "Former Minister - Sports", "image": "/Presda.jpg" },
+    { "id": 8, "name": "Hon. Alfred", "title": "Former Minister - Legal Affairs", "image": "/Alfreda.jpg" },
+    { "id": 9, "name": "Hon. Ramadhan", "title": "Former Minister - Defense", "image": "/Ramadhana.jpg" },
+    { "id": 10, "name": "Hon. Amosi", "title": "Former Minister - Infrastructure", "image": "/Amosa.jpg" },
+    { "id": 11, "name": "Hon. Lukio", "title": "Former Minister - Information", "image": "/Lukio.JPG" },
+    { "id": 12, "name": "Hon. Yazidu", "title": "Former Minister - Gender", "image": "/Yazidu.jpg" },
+    { "id": 13, "name": "Hon. Chusi", "title": "Former Minister - Student Loans", "image": "/Chusa.png" }
   ]
 }
