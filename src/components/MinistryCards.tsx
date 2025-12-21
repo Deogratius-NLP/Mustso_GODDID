@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp, BookOpen, Heart, Scale, Users, Wallet, Trophy, 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
-import leaderPlaceholder from '@/assets/leader-placeholder.png';
+import leaderPlaceholder from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
 const iconMap: Record<string, React.ReactNode> = {
   education: <BookOpen className="h-8 w-8" />,
@@ -78,7 +78,7 @@ const MinistryCards = () => {
                     <div className="space-y-4">
                       <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
                         <img 
-                          src={leaderPlaceholder} 
+                          src={featuredLeader.image || leaderPlaceholder} 
                           alt={featuredLeader.name}
                           className="w-full h-full object-cover object-top"
                         />
