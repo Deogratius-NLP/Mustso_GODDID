@@ -8,11 +8,15 @@ import mustsoData from '@/data/mustsoData.json';
 import news1 from '@/assets/news-1.png';
 import news2 from '@/assets/news-2.png';
 import news3 from '@/assets/news-3.png';
+import HESLB from '@/assets/HESLB.png';
+import unichoma from '@/assets/unichoma.png';
+import registeration from '@/assets/registeration.png';
 
 const newsImages: Record<string, string> = {
-  'news-1.png': news1,
   'news-2.png': news2,
-  'news-3.png': news3,
+  'HESLB.png': HESLB,
+  'unichoma.png': unichoma,
+  'registeration.png': registeration,
 };
 
 interface NewsItem {
