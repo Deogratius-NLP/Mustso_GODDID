@@ -5,6 +5,7 @@ interface Executive {
   id: number;
   name: string;
   title: string;
+  image: string;
 }
 
 const TopExecutivesSection = () => {
@@ -30,6 +31,7 @@ const TopExecutivesSection = () => {
               key={executive.id}
               name={executive.name}
               title={executive.title}
+              image={executive.image}
               showContact={false}
               animationDelay={index * 0.1}
             />
