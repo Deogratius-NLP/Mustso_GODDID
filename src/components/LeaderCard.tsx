@@ -1,6 +1,6 @@
 import { Phone, Mail } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import leaderPlaceholder from '@/assets/leader-placeholder.png';
+import placeholderImg from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
 interface LeaderCardProps {
   name: string;
@@ -11,6 +11,7 @@ interface LeaderCardProps {
   className?: string;
   animationDelay?: number;
   showAnimatedBorder?: boolean;
+  image?: string;
 }
 
 const LeaderCard = ({ 
@@ -21,8 +22,11 @@ const LeaderCard = ({
   showContact = true,
   className = '',
   animationDelay = 0,
-  showAnimatedBorder = true
+  showAnimatedBorder = true,
+  image
 }: LeaderCardProps) => {
+  const imageSrc = image && image.trim() !== '' ? image : placeholderImg;
+
   return (
     <div
       className={`relative group animate-fade-up opacity-0 ${className}`}
@@ -40,7 +44,7 @@ const LeaderCard = ({
           {/* Large Image */}
           <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg mb-4">
             <img 
-              src={leaderPlaceholder} 
+              src={imageSrc} 
               alt={name}
               className="w-full h-full object-cover object-top"
             />
