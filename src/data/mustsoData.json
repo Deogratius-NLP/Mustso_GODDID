@@ -101,7 +101,6 @@
         { "title": "Deputy Minister 1", "name": "JENIAN PAUL", "phone": "0783299172" },
         { "title": "Deputy Minister 2", "name": "ISMAIL MOHAMMED", "phone": "0675906789" },
         { "title": "Secretary 1", "name": "JAMES OBEDI", "phone": "0744872582" },
-        { "title": "Secretary 2", "name": "IRINE AXWESO", "phone": "0781656806" },
         { "title": "Secretary 3", "name": "RAHMA RAJABU", "phone": "0744437392" }
       ]
     },
@@ -148,11 +147,10 @@
         "Manage the student notice board"
       ],
       "leaders": [
-        { "title": "Minister", "name": "GODWIN LUKIIO", "phone": "0622133114", "email": "godwin.info@mustso.ac.tz" },
+        { "title": "Minister", "name": "GODWIN LUKIIO", "phone": "0622133114", "email": "godwin.info@mustso.ac.tz", "image": "/Lukio.JPG" },
         { "title": "Deputy Minister 1", "name": "DERICK NDOSSY", "phone": "0658977842" },
         { "title": "Secretary 1", "name": "ELIAH KEFAS", "phone": "0627787633" },
         { "title": "Secretary 2", "name": "MINZA LUGATA", "phone": "0768044008" },
-        { "title": "Secretary 3", "name": "HAPPYNESS MOREWA", "phone": "0748337048" },
         { "title": "Secretary 4", "name": "DEOGRATIUS FAUSTINE", "phone": "0766710179" }
       ]
     },
@@ -169,7 +167,6 @@
         { "title": "Deputy Minister 2", "name": "SIMON LAWRENCE", "phone": "0685348340" },
         { "title": "Secretary 1", "name": "CLAZIA LUCAS", "phone": "0781031554" },
         { "title": "Secretary 2", "name": "JENSEN KAYOMBO", "phone": "0659243436" },
-        { "title": "Secretary 3", "name": "JONATHAN NYINGI", "phone": "0740299217" },
         { "title": "Secretary 4", "name": "NASMA AYOUB", "phone": "0753105280" }
       ]
     },
