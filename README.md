@@ -11,7 +11,7 @@ Official website for **MUSTSO** – built with modern web technologies and deplo
 /public
 ├── Presda.png
 ├── Chairperson.png
-└── ...
+
 
 /src
 ├── assets
@@ -39,17 +39,22 @@ Add a new item under the `news` section:
   "description": "The MUSTSO general assembly brought together student leaders...",
   "image": "news1"
 }
+
 ⚠️ The value of "image" must match the imported image name in the component.
 
 2️⃣ Add News Images
+
 Place the image files in:
+
 src/assets/
 Example:
 src/assets/news1.png
 src/assets/news2.jpg
 
 3️⃣ Import Images in NewsroomSection.tsx
+
 Open:
+
 src/components/NewsroomSection.tsx
 Import the images:
 import news1 from "../assets/news1.png";
@@ -58,8 +63,11 @@ import news2 from "../assets/news2.jpg";
 
 
 👔 How to Add Leaders (Executives)
+
 Leader images are loaded directly from the public folder.
+
 1️⃣ Add Leader Images
+
 Place images in:
 public/
 Example:
@@ -68,7 +76,9 @@ public/VicePres.png
 public/Secretary.png
 
 2️⃣ Reference Images in Mustso.json
+
 Open:
+
 src/data/Mustso.json
 Use a public path starting with /:
 {
