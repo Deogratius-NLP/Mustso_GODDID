@@ -1,10 +1,10 @@
 {
   "executives": [
-    { "id": 1, "name": "Hon. Yohana Lucas", "title": "President", "image": "Presda.jpg" },
-    { "id": 2, "name": "Hon. Josephine Boha", "title": "Vice President", "image": "Vice_presda.jpeg" },
+    { "id": 1, "name": "Hon. Yohana Lucas", "title": "President", "image": "/Presda.jpg" },
+    { "id": 2, "name": "Hon. Josephine Boha", "title": "Vice President", "image": "/Vice_presda.jpeg" },
     { "id": 3, "name": "Hon. Benedict Mwita", "title": "Prime Minister" },
-    { "id": 4, "name": "Hon. Godfrey", "title": "Permanent Secretary - President's Office", "image": "godfrey.jpeg" },
-    { "id": 5, "name": "Hon. Venance", "title": "Permanent Secretary - Prime Minister's Office", "image": "Venance.png" }
+    { "id": 4, "name": "Hon. Godfrey", "title": "Permanent Secretary - President's Office", "image": "/godfrey.jpeg" },
+    { "id": 5, "name": "Hon. Venance", "title": "Permanent Secretary - Prime Minister's Office", "image": "/Venance.png" }
   ],
   "usrcLeaders": [
     { "id": 1, "name": "Hon. Robert Mwakasaka", "title": "Council Speaker" },
