@@ -1,9 +1,6 @@
 import LeaderCard from '@/components/LeaderCard';
 import mustsoData from '@/data/mustsoData.json';
 import placeholderImg from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
-import { importAllImages } from '@/utils/importImages';
-
-const imageMap = importAllImages(require.context('@/assets', false, /\.(png|jpe?g|svg)$/));
 
 const TopExecutivesSection = () => {
   const executives = (mustsoData as any).executives || [];
