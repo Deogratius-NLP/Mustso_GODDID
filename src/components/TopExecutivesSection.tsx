@@ -1,5 +1,9 @@
 import LeaderCard from '@/components/LeaderCard';
 import mustsoData from '@/data/mustsoData.json';
+import Presda from '@/assets/Presda.jpg';
+import VicePresda from '@/assets/Vice_presda.jpeg';
+import Godfrey from '@/assets/godfrey.jpeg';
+import Venance from '@/assets/Venance.png';
 
 interface Executive {
   id: number;
