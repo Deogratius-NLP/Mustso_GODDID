@@ -12,8 +12,8 @@ const Footer = ({ onNavigate }: FooterProps) => {
   const quickLinks: { label: string; section: ActiveSection | 'services' }[] = [
     { label: 'Home', section: 'home' },
     { label: 'Services', section: 'services' },
-    { label: 'USRC', section: 'usrc' },
-    { label: 'Judiciary', section: 'judiciary' },
+    //{ label: 'USRC', section: 'usrc' },
+    //{ label: 'Judiciary', section: 'judiciary' },
     { label: 'Newsroom', section: 'newsroom' },
     { label: 'Past Leaders', section: 'pastleaders' },
   ];
