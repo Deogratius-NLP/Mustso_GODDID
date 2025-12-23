@@ -90,3 +90,5 @@ Use a public path starting with /:
 
 ✅ Images in public do not need to be imported in React components.
 
+Images in the hero section and the logo 
+  are imported from the src/asset folder where they are used in HeroSection.tsx{HERO} & NavBar.tsx{LOGO} components
