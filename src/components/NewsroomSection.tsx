@@ -4,22 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
 
-// Import news images
-import news1 from '@/assets/news-1.png';
-import news2 from '@/assets/news-2.png';
-import news3 from '@/assets/news-3.png';
-import HESLB from '@/assets/HESLB.png';
-import unichoma from '@/assets/unichoma.png';
-import registeration from '@/assets/registeration.png';
-import dreamFM from '@/assets/dreamFM.png';
-
-const newsImages: Record<string, string> = {
-  'news-2.png': news2,
-  'HESLB.png': HESLB,
-  'unichoma.png': unichoma,
-  'registeration.png': registeration,
-  'dreamFM.png': dreamFM,
-};
 
 interface NewsItem {
   id: number;
@@ -48,12 +32,6 @@ const NewsroomSection = () => {
     setCurrentSlide((prev) => (prev - 1 + news.length) % news.length);
   };
 
-  const getNewsImage = (imageName?: string) => {
-    if (imageName && newsImages[imageName]) {
-      return newsImages[imageName];
-    }
-    return news1; // fallback
-  };
 
   return (
     <section id="newsroom" className="pt-24 pb-16 md:pt-28 md:pb-20 min-h-screen relative overflow-hidden">
@@ -92,7 +70,7 @@ const NewsroomSection = () => {
                     {/* Image Section */}
                     <div className="relative h-64 md:h-80 overflow-hidden">
                       <img 
-                        src={getNewsImage(item.image)} 
+                        src={item.image} 
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
@@ -164,7 +142,7 @@ const NewsroomSection = () => {
               {/* Card Image */}
               <div className="relative h-44 overflow-hidden">
                 <img 
-                  src={getNewsImage(item.image)} 
+                  src={item.image} 
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
