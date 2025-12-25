@@ -97,7 +97,7 @@
         "Provide advice on gender and religious matters to the MUSTSO government"
       ],
       "leaders": [
-        { "title": "Minister", "name": "ISRAEL LUHONDO", "phone": "0757978767", "email": "israel.gender@mustso.ac.tz" },
+        { "title": "Minister", "name": "ISRAEL LUHONDO", "phone": "0757978767", "image": "/Israel.jpg" },
         { "title": "Deputy Minister 1", "name": "JENIAN PAUL", "phone": "0783299172" },
         { "title": "Deputy Minister 2", "name": "ISMAIL MOHAMMED", "phone": "0675906789" },
         { "title": "Secretary 1", "name": "JAMES OBEDI", "phone": "0744872582" },
