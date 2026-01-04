@@ -3,9 +3,9 @@ import { ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
 import heroBg4 from '@/assets/Presda (hERO).jpg';
-import heroBg5 from '@/assets/hero-bg-5.jpg';
-import heroBg6 from '@/assets/hero-bg-6.jpg';
-import heroBg7 from '@/assets/hero-bg-7.jpg';
+import heroBg5 from '@/assets/hERO1.png';
+import heroBg6 from '@/assets/hERO2.png';
+import heroBg7 from '@/assets/hERO3.png';
 
 const heroSlides = [
   { image: heroBg4, alt: 'MUSTSO Student Leaders' },
