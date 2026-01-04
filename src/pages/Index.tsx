@@ -30,7 +30,7 @@ const Index = () => {
             <MinistryCards />
           </>
         )}
-        {activeSection === 'usrc' && <USRCSection />}
+        // {activeSection === 'usrc' && <USRCSection />}
         {activeSection === 'judiciary' && <JudiciarySection />}
         {activeSection === 'newsroom' && <NewsroomSection />}
         {activeSection === 'pastleaders' && <PastLeadersSection />}
