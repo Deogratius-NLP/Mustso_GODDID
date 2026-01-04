@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
-import heroBg4 from '@/assets/Presda.jpg';
+import heroBg4 from '@/assets/Presda (hERO).jpg';
 import heroBg5 from '@/assets/hero-bg-5.jpg';
 import heroBg6 from '@/assets/hero-bg-6.jpg';
 import heroBg7 from '@/assets/hero-bg-7.jpg';
