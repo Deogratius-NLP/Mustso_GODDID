@@ -163,7 +163,8 @@
         "Advise MUSTSO on all defense and security issues"
       ],
       "leaders": [
-        { "title": "Deputy Minister 1", "name": "MESHACK SHAYO", "phone": "0613942003", "image": "/meshack.jpeg" },
+        { "title": "Minister", "name": "JOHN PILI", "phone": "0794391469", "image": "/Lukio.JPG"},
+        { "title": "Deputy Minister 1", "name": "MESHACK SHAYO", "phone": "0613942003" },
         { "title": "Deputy Minister 2", "name": "SIMON LAWRENCE", "phone": "0685348340" },
         { "title": "Secretary 1", "name": "CLAZIA LUCAS", "phone": "0781031554" },
         { "title": "Secretary 2", "name": "JENSEN KAYOMBO", "phone": "0659243436" },
@@ -180,6 +181,7 @@
       ],
       "leaders": [
         { "title": "Minister", "name": "RAMADHANI KASEGEZYA", "phone": "0794391469", "image": "/Ramadhana.jpg" },
+        { "title": "Deputy Minister 1", "name": "GREGORY KIMARIO", "phone": "0688695107" },
         { "title": "Deputy Minister 2", "name": "GRACA KILEVA", "phone": "0686238170" },
         { "title": "Secretary 1", "name": "ERICA SHUMA", "phone": "0658786307" },
         { "title": "Secretary 2", "name": "ATHUMAN KUPAZA", "phone": "0613880717" },
