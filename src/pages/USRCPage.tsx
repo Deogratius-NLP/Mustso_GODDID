@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import usrcData from '@/data/usrcData.json';
 
-const placeholderImage = '/fallback news image.png';
+const placeholderImage = '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
 // Diamond-shaped leader card component
 const DiamondLeaderCard = ({ 
