@@ -8,7 +8,7 @@ import NewsroomSection from '@/components/NewsroomSection';
 import PastLeadersSection from '@/components/PastLeadersSection';
 import Footer from '@/components/Footer';
 
-type ActiveSection = 'home' | 'usrc' | 'judiciary' | 'newsroom' | 'pastleaders';
+type ActiveSection = 'home' | 'judiciary' | 'newsroom' | 'pastleaders';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<ActiveSection>('home');
