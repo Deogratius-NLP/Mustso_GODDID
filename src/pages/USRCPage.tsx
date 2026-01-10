@@ -1,40 +1,24 @@
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import placeholderImg from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import usrcData from '@/data/usrcData.json';
 
-// USRC Top Leaders data
-const usrcLeaders = [
-  { name: 'Council Speaker', title: 'Speaker of the Council', image: null },
-  { name: 'Deputy Speaker', title: 'Deputy Speaker', image: null },
-  { name: 'Secretary USRC', title: 'Secretary – USRC', image: null },
-  { name: 'Chairman USRC', title: 'Chairman – USRC', image: null },
-];
-
-// College data for the grid
-const colleges = [
-  { id: 'coict', name: 'CoICT', fullName: 'College of Information and Communication Technologies' },
-  { id: 'coact', name: 'CoACT', fullName: 'College of Architecture and Construction Technology' },
-  { id: 'cet', name: 'CET', fullName: 'College of Engineering and Technology' },
-  { id: 'coast', name: 'CoAST', fullName: 'College of Applied Sciences and Technology' },
-  { id: 'cohbs', name: 'CoHBS', fullName: 'College of Health and Biomedical Sciences' },
-  { id: 'mrcc', name: 'MRCC', fullName: 'Mbeya Regional Campus College' },
-  { id: 'coste', name: 'CoSTE', fullName: 'College of Science and Technology Education' },
-  { id: 'off-campus', name: 'Off-Campus', fullName: 'Off-Campus Representatives' },
-  { id: 'in-campus', name: 'In-Campus', fullName: 'In-Campus Representatives' },
-];
+const placeholderImage = '/fallback news image.png';
 
 // Diamond-shaped leader card component
 const DiamondLeaderCard = ({ 
   name, 
-  title, 
+  position, 
   image,
   animationDelay = 0 
 }: { 
   name: string; 
-  title: string; 
-  image: string | null;
+  position: string; 
+  image: string;
   animationDelay?: number;
 }) => {
-  const imageSrc = image || placeholderImg;
+  const imageSrc = image || placeholderImage;
   
   return (
     <div 
@@ -49,16 +33,19 @@ const DiamondLeaderCard = ({
             alt={name}
             className="w-full h-full object-cover -rotate-45 scale-[1.42]"
             loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = placeholderImage;
+            }}
           />
         </div>
         {/* Glow effect on hover */}
         <div className="absolute inset-0 rotate-45 rounded-2xl bg-primary/0 group-hover:bg-primary/10 transition-all duration-300" />
       </div>
       
-      {/* Name and title */}
+      {/* Name and position */}
       <div className="mt-6 text-center">
         <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-foreground">{name}</h3>
-        <p className="text-xs sm:text-sm md:text-base text-primary-foreground/70 mt-1">{title}</p>
+        <p className="text-xs sm:text-sm md:text-base text-primary-foreground/70 mt-1">{position}</p>
       </div>
     </div>
   );
@@ -66,39 +53,48 @@ const DiamondLeaderCard = ({
 
 // College card component
 const CollegeCard = ({ 
-  name, 
+  shortName, 
   fullName,
+  slug,
   animationDelay = 0 
 }: { 
-  name: string; 
+  shortName: string; 
   fullName: string;
+  slug: string;
   animationDelay?: number;
 }) => {
   return (
-    <Card 
-      className="group cursor-pointer overflow-hidden bg-card border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-up opacity-0"
-      style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
-    >
-      <CardContent className="p-6 text-center">
-        <h3 className="text-xl md:text-2xl font-bold text-primary group-hover:text-primary/80 transition-colors">
-          {name}
-        </h3>
-        <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-          {fullName}
-        </p>
-        <div className="mt-4 flex justify-center">
-          <span className="inline-flex items-center text-xs font-medium text-primary/70 group-hover:text-primary transition-colors">
-            View Leaders →
-          </span>
-        </div>
-      </CardContent>
-    </Card>
+    <Link to={`/usrc/colleges/${slug}`}>
+      <Card 
+        className="group cursor-pointer overflow-hidden bg-card border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-up opacity-0"
+        style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
+      >
+        <CardContent className="p-6 text-center">
+          <h3 className="text-xl md:text-2xl font-bold text-primary group-hover:text-primary/80 transition-colors">
+            {shortName}
+          </h3>
+          <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+            {fullName}
+          </p>
+          <div className="mt-4 flex justify-center">
+            <span className="inline-flex items-center text-xs font-medium text-primary/70 group-hover:text-primary transition-colors">
+              View Leaders →
+            </span>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
-const USRCSection = () => {
+const USRCPage = () => {
+  const { topLeaders, colleges } = usrcData.usrc;
+  const collegeList = Object.values(colleges);
+
   return (
     <div className="min-h-screen">
+      <Navbar activeSection="usrc" onNavigate={() => {}} />
+      
       {/* Hero Section */}
       <section className="relative bg-secondary pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         {/* Background decorations */}
@@ -125,11 +121,11 @@ const USRCSection = () => {
           
           {/* Leader cards in horizontal layout */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-5xl mx-auto">
-            {usrcLeaders.map((leader, index) => (
+            {topLeaders.map((leader, index) => (
               <DiamondLeaderCard
-                key={leader.title}
+                key={leader.id}
                 name={leader.name}
-                title={leader.title}
+                position={leader.position}
                 image={leader.image}
                 animationDelay={0.1 + index * 0.1}
               />
@@ -153,19 +149,22 @@ const USRCSection = () => {
           
           {/* Colleges grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {colleges.map((college, index) => (
+            {collegeList.map((college, index) => (
               <CollegeCard
-                key={college.id}
-                name={college.name}
-                fullName={college.fullName}
+                key={college.slug}
+                shortName={college.shortName}
+                fullName={college.name}
+                slug={college.slug}
                 animationDelay={0.1 + index * 0.05}
               />
             ))}
           </div>
         </div>
       </section>
+
+      <Footer activeSection="usrc" onNavigate={() => {}} />
     </div>
   );
 };
 
-export default USRCSection;
+export default USRCPage;

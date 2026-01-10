@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import TopExecutivesSection from '@/components/TopExecutivesSection';
 import MinistryCards from '@/components/MinistryCards';
-import USRCSection from '@/components/USRCSection';
 import JudiciarySection from '@/components/JudiciarySection';
 import NewsroomSection from '@/components/NewsroomSection';
 import PastLeadersSection from '@/components/PastLeadersSection';
@@ -30,7 +29,6 @@ const Index = () => {
             <MinistryCards />
           </>
         )}
-        {activeSection === 'usrc' && <USRCSection />}
         {activeSection === 'judiciary' && <JudiciarySection />}
         {activeSection === 'newsroom' && <NewsroomSection />}
         {activeSection === 'pastleaders' && <PastLeadersSection />}
