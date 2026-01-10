@@ -13,10 +13,7 @@ interface NavbarProps {
 const navItems: { label: string; section: ActiveSection | 'services' }[] = [
   { label: 'Home', section: 'home' },
   { label: 'Services', section: 'services' },
-  // USRC (temporarily hidden)
-  // { label: 'USRC', section: 'usrc' },
-  // Judiciary (temporarily hidden)
-  // { label: 'Judiciary', section: 'judiciary' },
+  { label: 'USRC', section: 'usrc' },
   { label: 'Newsroom', section: 'newsroom' },
   { label: 'Past Leaders', section: 'pastleaders' },
 ];
