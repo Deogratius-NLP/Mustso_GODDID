@@ -1,242 +1,171 @@
-// import { useState } from 'react';
-// import { ChevronDown, ChevronUp, Phone, Building2 } from 'lucide-react';
-// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import { Button } from '@/components/ui/button';
-// import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-// import mustsoData from '@/data/mustsoData.json';
-// import leaderPlaceholder from '@/assets/leader-placeholder.png';
-// import LeaderCard from '@/components/LeaderCard';
+import { Card, CardContent } from '@/components/ui/card';
+import placeholderImg from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
-// interface CollegeLeader {
-//   name: string;
-//   title: string;
-//   phone: string;
-//   image?: string;
-// }
+// USRC Top Leaders data
+const usrcLeaders = [
+  { name: 'Council Speaker', title: 'Speaker of the Council', image: null },
+  { name: 'Deputy Speaker', title: 'Deputy Speaker', image: null },
+  { name: 'Secretary USRC', title: 'Secretary – USRC', image: null },
+  { name: 'Chairman USRC', title: 'Chairman – USRC', image: null },
+];
 
-// interface DeptLeader {
-//   name: string;
-//   phone: string;
-// }
+// College data for the grid
+const colleges = [
+  { id: 'coict', name: 'CoICT', fullName: 'College of Information and Communication Technologies' },
+  { id: 'coact', name: 'CoACT', fullName: 'College of Architecture and Construction Technology' },
+  { id: 'cet', name: 'CET', fullName: 'College of Engineering and Technology' },
+  { id: 'coast', name: 'CoAST', fullName: 'College of Applied Sciences and Technology' },
+  { id: 'cohbs', name: 'CoHBS', fullName: 'College of Health and Biomedical Sciences' },
+  { id: 'mrcc', name: 'MRCC', fullName: 'Mbeya Regional Campus College' },
+  { id: 'coste', name: 'CoSTE', fullName: 'College of Science and Technology Education' },
+  { id: 'off-campus', name: 'Off-Campus', fullName: 'Off-Campus Representatives' },
+  { id: 'in-campus', name: 'In-Campus', fullName: 'In-Campus Representatives' },
+];
 
-// interface Department {
-//   name: string;
-//   leader?: DeptLeader;
-// }
+// Diamond-shaped leader card component
+const DiamondLeaderCard = ({ 
+  name, 
+  title, 
+  image,
+  animationDelay = 0 
+}: { 
+  name: string; 
+  title: string; 
+  image: string | null;
+  animationDelay?: number;
+}) => {
+  const imageSrc = image || placeholderImg;
+  
+  return (
+    <div 
+      className="flex flex-col items-center animate-fade-up opacity-0"
+      style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
+    >
+      {/* Diamond shape container */}
+      <div className="relative group">
+        <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rotate-45 overflow-hidden rounded-2xl border-4 border-primary/30 shadow-lg transition-all duration-300 group-hover:border-primary/60 group-hover:shadow-xl">
+          <img
+            src={imageSrc}
+            alt={name}
+            className="w-full h-full object-cover -rotate-45 scale-[1.42]"
+            loading="lazy"
+          />
+        </div>
+        {/* Glow effect on hover */}
+        <div className="absolute inset-0 rotate-45 rounded-2xl bg-primary/0 group-hover:bg-primary/10 transition-all duration-300" />
+      </div>
+      
+      {/* Name and title */}
+      <div className="mt-6 text-center">
+        <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-foreground">{name}</h3>
+        <p className="text-xs sm:text-sm md:text-base text-primary-foreground/70 mt-1">{title}</p>
+      </div>
+    </div>
+  );
+};
 
-// interface College {
-//   id: string;
-//   name: string;
-//   leader?: CollegeLeader;
-//   departments: Department[];
-// }
+// College card component
+const CollegeCard = ({ 
+  name, 
+  fullName,
+  animationDelay = 0 
+}: { 
+  name: string; 
+  fullName: string;
+  animationDelay?: number;
+}) => {
+  return (
+    <Card 
+      className="group cursor-pointer overflow-hidden bg-card border border-border/50 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-up opacity-0"
+      style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
+    >
+      <CardContent className="p-6 text-center">
+        <h3 className="text-xl md:text-2xl font-bold text-primary group-hover:text-primary/80 transition-colors">
+          {name}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+          {fullName}
+        </p>
+        <div className="mt-4 flex justify-center">
+          <span className="inline-flex items-center text-xs font-medium text-primary/70 group-hover:text-primary transition-colors">
+            View Leaders →
+          </span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
-// interface USRCLeader {
-//   id: number;
-//   name: string;
-//   title: string;
-// }
-
-// interface SpecialRep {
-//   id: number;
-//   name: string;
-//   title: string;
-// }
-
-// const USRCSection = () => {
-//   const [openColleges, setOpenColleges] = useState<string[]>([]);
-
-//   const toggleCollege = (collegeId: string) => {
-//     setOpenColleges((prev) =>
-//       prev.includes(collegeId)
-//         ? prev.filter((id) => id !== collegeId)
-//         : [...prev, collegeId]
-//     );
-//   };
-
-//   const colleges = mustsoData.colleges as College[];
-//   const usrcLeaders = (mustsoData as any).usrcLeaders as USRCLeader[] || [];
-//   const specialReps = (mustsoData as any).specialRepresentatives as SpecialRep[] || [];
-
-//   return (
-//     <section id="usrc" className="pt-24 pb-16 md:pt-28 md:pb-20 bg-background min-h-screen">
-//       <div className="container mx-auto px-4">
-//         {/* Section Header */}
-//         <div className="text-center mb-12">
-//           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-//             USRC <span className="gradient-text">Leadership</span>
-//           </h1>
-//           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-//             University Students Representative Council - The voice of all students at MUST.
-//           </p>
-//         </div>
-
-//         {/* USRC Top Leadership */}
-//         <div className="mb-16">
-//           <div className="text-center mb-8">
-//             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-//               Top <span className="gradient-text">Leadership</span>
-//             </h2>
-//             <p className="text-muted-foreground">USRC Executive Council</p>
-//           </div>
+const USRCSection = () => {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-secondary pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Header text */}
+          <div className="text-center mb-12 md:mb-16 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+              University Student Representative Council
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 font-medium">
+              (USRC)
+            </p>
+            <div className="mt-4">
+              <span className="inline-block px-6 py-2 bg-primary/20 rounded-full text-primary-foreground/90 text-lg font-semibold">
+                Bunge
+              </span>
+            </div>
+          </div>
           
-//           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-//             {usrcLeaders.map((leader, index) => (
-//               <LeaderCard
-//                 key={leader.id}
-//                 name={leader.name}
-//                 title={leader.title}
-//                 showContact={false}
-//                 animationDelay={index * 0.1}
-//               />
-//             ))}
-//           </div>
-//         </div>
+          {/* Leader cards in horizontal layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {usrcLeaders.map((leader, index) => (
+              <DiamondLeaderCard
+                key={leader.title}
+                name={leader.name}
+                title={leader.title}
+                image={leader.image}
+                animationDelay={0.1 + index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
-//         {/* College Representatives Section Header */}
-//         <div className="text-center mb-8">
-//           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-//             College <span className="gradient-text">Representatives</span>
-//           </h2>
-//           <p className="text-muted-foreground">Student leadership across all colleges and departments at MUST.</p>
-//         </div>
-
-//         {/* Colleges Grid */}
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-//           {colleges.map((college, index) => (
-//             <Card
-//               key={college.id}
-//               className="card-hover animate-fade-up opacity-0"
-//               style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
-//             >
-//               <Collapsible
-//                 open={openColleges.includes(college.id)}
-//                 onOpenChange={() => toggleCollege(college.id)}
-//               >
-//                 <CardHeader className="pb-4">
-//                   <div className="flex items-start justify-between gap-4">
-//                     <div className="flex items-start gap-4">
-//                       <div className="p-3 rounded-xl bg-secondary text-secondary-foreground">
-//                         <Building2 className="h-6 w-6" />
-//                       </div>
-//                       <div>
-//                         <CardTitle className="text-lg leading-tight text-card-foreground">
-//                           {college.name}
-//                         </CardTitle>
-//                         <p className="text-sm text-muted-foreground mt-1">
-//                           {college.departments.length} Departments
-//                         </p>
-//                       </div>
-//                     </div>
-//                     <CollapsibleTrigger asChild>
-//                       <Button variant="ghost" size="icon" className="flex-shrink-0">
-//                         {openColleges.includes(college.id) ? (
-//                           <ChevronUp className="h-5 w-5" />
-//                         ) : (
-//                           <ChevronDown className="h-5 w-5" />
-//                         )}
-//                       </Button>
-//                     </CollapsibleTrigger>
-//                   </div>
-
-//                   {/* College Leader */}
-//                   {college.leader && college.leader.name && (
-//                     <div className="mt-4 p-4 rounded-lg bg-accent">
-//                       <div className="flex items-start gap-4">
-//                         <div className="w-24 h-32 rounded-xl overflow-hidden border-2 border-primary flex-shrink-0">
-//                           <img 
-//                             src={leaderPlaceholder} 
-//                             alt={college.leader.name}
-//                             className="w-full h-full object-cover object-top"
-//                           />
-//                         </div>
-//                         <div className="flex-1">
-//                           <h4 className="font-bold text-accent-foreground text-lg">
-//                             {college.leader.name}
-//                           </h4>
-//                           <p className="text-sm text-primary font-medium">
-//                             {college.leader.title}
-//                           </p>
-//                           <a
-//                             href={`tel:${college.leader.phone}`}
-//                             className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mt-2"
-//                           >
-//                             <Phone className="w-4 h-4" />
-//                             {college.leader.phone}
-//                           </a>
-//                         </div>
-//                       </div>
-//                     </div>
-//                   )}
-//                 </CardHeader>
-
-//                 <CollapsibleContent>
-//                   <CardContent className="pt-0">
-//                     <h4 className="font-semibold text-foreground mb-4">Department Representatives</h4>
-//                     <div className="space-y-2">
-//                       {college.departments.map((dept, dIndex) => (
-//                         <div
-//                           key={dIndex}
-//                           className="p-3 rounded-lg bg-muted"
-//                         >
-//                           <h5 className="font-medium text-foreground text-sm mb-1">
-//                             {dept.name}
-//                           </h5>
-//                           {dept.leader && dept.leader.name && (
-//                             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-//                               <span>{dept.leader.name}</span>
-//                               {dept.leader.phone && (
-//                                 <a
-//                                   href={`tel:${dept.leader.phone}`}
-//                                   className="flex items-center gap-1 hover:text-primary transition-colors"
-//                                 >
-//                                   <Phone className="w-3 h-3" />
-//                                   {dept.leader.phone}
-//                                 </a>
-//                               )}
-//                             </div>
-//                           )}
-//                         </div>
-//                       ))}
-//                     </div>
-//                   </CardContent>
-//                 </CollapsibleContent>
-//               </Collapsible>
-//             </Card>
-//           ))}
-//         </div>
-
-//         {/* Special Representatives Section */}
-//         <div className="relative py-16 -mx-4 px-4" style={{ background: 'var(--gradient-special-reps)' }}>
-//           <div className="absolute inset-0 opacity-30">
-//             <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-//             <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
-//           </div>
+      {/* Colleges & Representation Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          {/* Section header */}
+          <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Student Representation by Colleges
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Find your leader easily based on your college or location
+            </p>
+          </div>
           
-//           <div className="relative z-10">
-//             <div className="text-center mb-8">
-//               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-//                 Special <span className="gradient-text">Representatives</span>
-//               </h2>
-//               <p className="text-muted-foreground">Representatives for special student interests and concerns.</p>
-//             </div>
-            
-//             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-//               {specialReps.map((rep, index) => (
-//                 <LeaderCard
-//                   key={rep.id}
-//                   name={rep.name}
-//                   title={rep.title}
-//                   showContact={false}
-//                   animationDelay={index * 0.05}
-//                 />
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+          {/* Colleges grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {colleges.map((college, index) => (
+              <CollegeCard
+                key={college.id}
+                name={college.name}
+                fullName={college.fullName}
+                animationDelay={0.1 + index * 0.05}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
-// export default USRCSection;
+export default USRCSection;
