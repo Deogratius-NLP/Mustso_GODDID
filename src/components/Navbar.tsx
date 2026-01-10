@@ -14,7 +14,6 @@ interface NavbarProps {
 const navItems: { label: string; section: ActiveSection | 'services'; route?: string }[] = [
   { label: 'Home', section: 'home', route: '/' },
   { label: 'Services', section: 'services' },
-  { label: 'USRC', section: 'usrc', route: '/usrc' },
   { label: 'Newsroom', section: 'newsroom' },
   { label: 'Past Leaders', section: 'pastleaders' },
 ];
