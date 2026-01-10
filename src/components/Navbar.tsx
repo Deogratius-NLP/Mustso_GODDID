@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
 
@@ -10,10 +11,10 @@ interface NavbarProps {
   onNavigate: (section: ActiveSection) => void;
 }
 
-const navItems: { label: string; section: ActiveSection | 'services' }[] = [
-  { label: 'Home', section: 'home' },
+const navItems: { label: string; section: ActiveSection | 'services'; route?: string }[] = [
+  { label: 'Home', section: 'home', route: '/' },
   { label: 'Services', section: 'services' },
-  { label: 'USRC', section: 'usrc' },
+  { label: 'USRC', section: 'usrc', route: '/usrc' },
   { label: 'Newsroom', section: 'newsroom' },
   { label: 'Past Leaders', section: 'pastleaders' },
 ];
@@ -21,6 +22,8 @@ const navItems: { label: string; section: ActiveSection | 'services' }[] = [
 const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,29 +33,56 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (section: ActiveSection | 'services') => {
+  const handleNavClick = (section: ActiveSection | 'services', route?: string) => {
+    if (route) {
+      navigate(route);
+      setIsOpen(false);
+      return;
+    }
+    
     if (section === 'services') {
       // Navigate to home and scroll to services
-      onNavigate('home');
-      setTimeout(() => {
-        const element = document.querySelector('#services');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const element = document.querySelector('#services');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        onNavigate('home');
+        setTimeout(() => {
+          const element = document.querySelector('#services');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
     } else {
-      onNavigate(section);
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => onNavigate(section), 100);
+      } else {
+        onNavigate(section);
+      }
     }
     setIsOpen(false);
   };
 
-  const isActive = (section: ActiveSection | 'services') => {
+  const isActive = (section: ActiveSection | 'services', route?: string) => {
+    if (route) {
+      if (route === '/usrc') {
+        return location.pathname.startsWith('/usrc');
+      }
+      return location.pathname === route;
+    }
     if (section === 'services') return false;
-    return activeSection === section;
+    return location.pathname === '/' && activeSection === section;
   };
 
   // Show transparent bg only on home page when not scrolled
-  const showTransparent = activeSection === 'home' && !scrolled;
+  const showTransparent = location.pathname === '/' && activeSection === 'home' && !scrolled;
 
   return (
     <nav
@@ -65,8 +95,9 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <button 
-            onClick={() => handleNavClick('home')} 
+          <Link 
+            to="/"
+            onClick={() => onNavigate('home')} 
             className="flex items-center gap-3"
           >
             <img src={mustsoLogo} alt="MUSTSO Logo" className="h-10 md:h-12 w-auto" />
@@ -75,16 +106,16 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
             }`}>
               MUSTSO
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.section}
-                onClick={() => handleNavClick(item.section)}
+                onClick={() => handleNavClick(item.section, item.route)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                  isActive(item.section)
+                  isActive(item.section, item.route)
                     ? 'bg-primary text-primary-foreground'
                     : showTransparent
                     ? 'text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10'
@@ -114,9 +145,9 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
               {navItems.map((item, index) => (
                 <button
                   key={item.section}
-                  onClick={() => handleNavClick(item.section)}
+                  onClick={() => handleNavClick(item.section, item.route)}
                   className={`px-6 py-3 text-left transition-colors ${
-                    isActive(item.section)
+                    isActive(item.section, item.route)
                       ? 'text-primary bg-accent'
                       : 'text-foreground hover:text-primary hover:bg-accent'
                   }`}
