@@ -60,9 +60,11 @@ const DiamondLeaderCard = ({
         </div>
       </div>
       
-      {/* Position title */}
-      <div className="mt-4 text-center">
-        <p className="text-xs sm:text-sm text-white/90 font-medium uppercase tracking-wide">{position}</p>
+      {/* Position title with white rounded rectangle */}
+      <div className="mt-6 md:mt-8 text-center">
+        <span className="inline-block bg-white/95 px-4 py-1.5 rounded-full shadow-sm">
+          <p className="text-xs sm:text-sm text-secondary font-semibold uppercase tracking-wide">{position}</p>
+        </span>
       </div>
     </div>
   );
@@ -134,7 +136,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
           {/* Header text */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-              <span className="bg-gradient-to-br from-white via-white to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-primary via-primary to-white bg-clip-text text-transparent">
                 Student University Representative Council
               </span>
             </h1>
