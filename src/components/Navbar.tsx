@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import mustsoLogo from '@/assets/mustso-logo.png';
 
-type ActiveSection = 'home' | 'judiciary' | 'newsroom' | 'pastleaders';
+type ActiveSection = 'home' | 'judiciary' | 'newsroom' | 'pastleaders' | 'usrc' | 'college';
 
 interface NavbarProps {
   activeSection: ActiveSection;
@@ -12,8 +12,9 @@ interface NavbarProps {
 }
 
 const navItems: { label: string; section: ActiveSection | 'services'; route?: string }[] = [
-  { label: 'Home', section: 'home', route: '/' },
+  { label: 'Home', section: 'home' },
   { label: 'Services', section: 'services' },
+  { label: 'USRC', section: 'usrc' },
   { label: 'Newsroom', section: 'newsroom' },
   { label: 'Past Leaders', section: 'pastleaders' },
 ];
@@ -70,14 +71,9 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   };
 
   const isActive = (section: ActiveSection | 'services', route?: string) => {
-    if (route) {
-      if (route === '/usrc') {
-        return location.pathname.startsWith('/usrc');
-      }
-      return location.pathname === route;
-    }
     if (section === 'services') return false;
-    return location.pathname === '/' && activeSection === section;
+    if (section === 'usrc') return activeSection === 'usrc' || activeSection === 'college';
+    return activeSection === section;
   };
 
   // Show transparent bg only on home page when not scrolled
