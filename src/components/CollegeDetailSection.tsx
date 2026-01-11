@@ -88,9 +88,9 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
           </button>
           
           <div className="text-center">
-            {/* College Name */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-              {getShortName(collegeData.name)}
+            {/* College Full Name */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8 animate-fade-up opacity-0 px-2" style={{ animationFillMode: 'forwards' }}>
+              {collegeData.name}
             </h1>
             
             {/* Diamond image placeholder */}

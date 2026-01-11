@@ -45,9 +45,9 @@ const DiamondLeaderCard = ({
       className="flex flex-col items-center animate-fade-up opacity-0"
       style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
     >
-      {/* Diamond shape container */}
+      {/* Diamond shape container - larger on web */}
       <div className="relative group">
-        <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rotate-45 overflow-hidden bg-white border-2 border-white/30 shadow-lg transition-all duration-300 group-hover:border-white/60 group-hover:shadow-xl">
+        <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rotate-45 overflow-hidden bg-white border-2 border-white/30 shadow-lg transition-all duration-300 group-hover:border-white/60 group-hover:shadow-xl">
           <img
             src={imageSrc}
             alt={name}
@@ -81,6 +81,14 @@ const CollegeCard = ({
   // Get short name from the full name (e.g., "CoICT" from "College of Information...")
   const shortName = college.id.toUpperCase();
   
+  const displayName = shortName === 'COICT' ? 'CoICT' : 
+    shortName === 'COACT' ? 'CoACT' :
+    shortName === 'CET' ? 'CET' :
+    shortName === 'COAST' ? 'CoAST' :
+    shortName === 'COHBS' ? 'CoHBS' :
+    shortName === 'COSTE' ? 'CoSTE' :
+    shortName;
+  
   return (
     <button
       onClick={onClick}
@@ -90,16 +98,13 @@ const CollegeCard = ({
       <Card 
         className="group cursor-pointer overflow-hidden bg-muted/50 border border-border/30 hover:border-primary/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
       >
-        <CardContent className="p-6 flex items-center justify-center min-h-[80px]">
+        <CardContent className="p-4 md:p-5 flex flex-col items-center justify-center min-h-[90px] gap-1">
           <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-            {shortName === 'COICT' ? 'CoICT' : 
-             shortName === 'COACT' ? 'CoACT' :
-             shortName === 'CET' ? 'CET' :
-             shortName === 'COAST' ? 'CoAST' :
-             shortName === 'COHBS' ? 'CoHBS' :
-             shortName === 'COSTE' ? 'CoSTE' :
-             shortName}
+            {displayName}
           </h3>
+          <span className="text-xs text-primary/70 font-medium group-hover:text-primary transition-colors">
+            View Leaders
+          </span>
         </CardContent>
       </Card>
     </button>
@@ -128,10 +133,12 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
         <div className="container mx-auto px-4 relative z-10">
           {/* Header text */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              Student University Representative Council
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+              <span className="bg-gradient-to-br from-white via-white to-primary bg-clip-text text-transparent">
+                Student University Representative Council
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl text-white/80 font-medium uppercase tracking-wider">
+            <p className="text-lg sm:text-xl text-white font-medium uppercase tracking-wider">
               BUNGE
             </p>
           </div>
@@ -164,8 +171,8 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
             </p>
           </div>
           
-          {/* Colleges grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          {/* Colleges grid - tighter spacing on web */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto">
             {colleges.map((college, index) => (
               <CollegeCard
                 key={college.id}
