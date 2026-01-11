@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import mustsoLogo from '@/assets/mustso-logo.png';
 
-type ActiveSection = 'home' | 'usrc' | 'judiciary' | 'newsroom' | 'pastleaders';
+type ActiveSection = 'home' | 'usrc' | 'college' | 'judiciary' | 'newsroom' | 'pastleaders';
 
 interface FooterProps {
   activeSection: ActiveSection;
