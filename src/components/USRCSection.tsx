@@ -26,6 +26,43 @@ interface USRCLeader {
   image?: string;
 }
 
+// SVG Background Pattern Component
+const GeometricPattern = () => (
+  <svg
+    className="absolute inset-0 w-full h-full opacity-[0.03]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern
+        id="geometric-pattern"
+        x="0"
+        y="0"
+        width="60"
+        height="60"
+        patternUnits="userSpaceOnUse"
+      >
+        <path
+          d="M30 0L60 30L30 60L0 30Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          className="text-primary"
+        />
+        <circle
+          cx="30"
+          cy="30"
+          r="8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          className="text-secondary"
+        />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#geometric-pattern)" />
+  </svg>
+);
+
 // Diamond-shaped leader card component
 const DiamondLeaderCard = ({ 
   name, 
@@ -45,9 +82,9 @@ const DiamondLeaderCard = ({
       className="flex flex-col items-center animate-fade-up opacity-0"
       style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
     >
-      {/* Diamond shape container - larger on web */}
+      {/* Diamond shape container with hover effect */}
       <div className="relative group">
-        <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rotate-45 overflow-hidden bg-white border-2 border-white/30 shadow-lg transition-all duration-300 group-hover:border-white/60 group-hover:shadow-xl">
+        <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rotate-45 overflow-hidden bg-white border-2 border-transparent shadow-lg transition-all duration-300 group-hover:border-primary group-hover:shadow-xl group-hover:shadow-primary/20">
           <img
             src={imageSrc}
             alt={name}
@@ -80,7 +117,6 @@ const CollegeCard = ({
   onClick: () => void;
   animationDelay?: number;
 }) => {
-  // Get short name from the full name (e.g., "CoICT" from "College of Information...")
   const shortName = college.id.toUpperCase();
   
   const displayName = shortName === 'COICT' ? 'CoICT' : 
@@ -98,13 +134,13 @@ const CollegeCard = ({
       style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
     >
       <Card 
-        className="group cursor-pointer overflow-hidden bg-muted/50 border border-border/30 hover:border-primary/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+        className="group cursor-pointer overflow-hidden bg-card border border-border/30 shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
       >
-        <CardContent className="p-4 md:p-5 flex flex-col items-center justify-center min-h-[90px] gap-1">
-          <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+        <CardContent className="p-5 md:p-6 lg:p-7 flex flex-col items-center justify-center min-h-[100px] md:min-h-[120px] gap-1.5">
+          <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
             {displayName}
           </h3>
-          <span className="text-xs text-primary/70 font-medium group-hover:text-primary transition-colors">
+          <span className="text-xs md:text-sm text-primary/70 font-medium group-hover:text-primary transition-colors">
             View Leaders
           </span>
         </CardContent>
@@ -121,7 +157,6 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
   const usrcLeaders = mustsoData.usrcLeaders as USRCLeader[];
   const colleges = mustsoData.colleges as College[];
 
-  // Additional representation areas
   const additionalAreas = [
     { id: 'mrcc', name: 'MRCC' },
     { id: 'off-campus', name: 'Off-Campus' },
@@ -130,18 +165,50 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative bg-secondary py-16 md:py-24 overflow-hidden">
+      {/* Hero Section - Two Column Layout */}
+      <section className="relative bg-gradient-to-br from-secondary via-secondary to-secondary/90 py-16 md:py-24 overflow-hidden">
+        <GeometricPattern />
         <div className="container mx-auto px-4 relative z-10">
-          {/* Header text */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Column - Text */}
+            <div className="text-center lg:text-left animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                <span className="text-primary">University Students</span>
+                <br />
+                <span className="text-white">Representative Council</span>
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light italic tracking-wide">
+                Bunge la Wanafunzi
+              </p>
+            </div>
+            
+            {/* Right Column - Image */}
+            <div className="flex justify-center lg:justify-end animate-fade-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              <div className="relative">
+                <img
+                  src={fallbackImage}
+                  alt="USRC Representative"
+                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-black/30"
+                />
+                {/* Decorative elements */}
+                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* USRC Leaders Section */}
+      <section className="relative py-16 md:py-20 bg-muted/30 overflow-hidden">
+        <GeometricPattern />
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Section header */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-              <span className="bg-gradient-to-br from-primary via-primary to-white bg-clip-text text-transparent">
-                Student University Representative Council
-              </span>
-            </h1>
-            <p className="text-lg sm:text-xl text-white font-medium uppercase tracking-wider">
-              BUNGE
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
+              Council Leadership
+            </h2>
+            <p className="text-muted-foreground text-base">
+              The executive team leading the student council
             </p>
           </div>
           
@@ -161,8 +228,9 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
       </section>
 
       {/* Student Representatives Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-16 md:py-24 bg-muted/30 overflow-hidden">
+        <GeometricPattern />
+        <div className="container mx-auto px-4 relative z-10">
           {/* Section header */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
@@ -173,8 +241,8 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
             </p>
           </div>
           
-          {/* Colleges grid - tighter spacing on web */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto">
+          {/* Colleges grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
             {colleges.map((college, index) => (
               <CollegeCard
                 key={college.id}
@@ -191,11 +259,14 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
                 className="w-full animate-fade-up opacity-0"
                 style={{ animationDelay: `${0.1 + (colleges.length + index) * 0.05}s`, animationFillMode: 'forwards' }}
               >
-                <Card className="group cursor-pointer overflow-hidden bg-muted/50 border border-border/30 hover:border-primary/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-                  <CardContent className="p-6 flex items-center justify-center min-h-[80px]">
-                    <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                <Card className="group cursor-pointer overflow-hidden bg-card border border-border/30 shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                  <CardContent className="p-5 md:p-6 lg:p-7 flex flex-col items-center justify-center min-h-[100px] md:min-h-[120px] gap-1.5">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       {area.name}
                     </h3>
+                    <span className="text-xs md:text-sm text-primary/70 font-medium group-hover:text-primary transition-colors">
+                      View Leaders
+                    </span>
                   </CardContent>
                 </Card>
               </button>
