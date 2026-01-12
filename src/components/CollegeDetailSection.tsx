@@ -2,6 +2,7 @@ import { ArrowLeft, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mustsoData from '@/data/mustsoData.json';
 import fallbackImage from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
+import { GeometricPattern } from './USRCSection';
 
 interface College {
   id: string;
@@ -77,6 +78,7 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="relative bg-secondary py-12 md:py-20 overflow-hidden">
+        <GeometricPattern id="college-hero-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           {/* Back button */}
           <button 
@@ -119,8 +121,9 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
       </section>
 
       {/* Departments List Section */}
-      <section className="py-8 md:py-12 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-8 md:py-12 bg-muted/30 overflow-hidden">
+        <GeometricPattern id="college-depts-pattern" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto">
             {/* Departments Card */}
             <div className="bg-muted/30 rounded-2xl overflow-hidden shadow-sm animate-fade-up opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>

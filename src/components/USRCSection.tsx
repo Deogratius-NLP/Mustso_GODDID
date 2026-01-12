@@ -27,14 +27,14 @@ interface USRCLeader {
 }
 
 // SVG Background Pattern Component
-const GeometricPattern = () => (
+const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
   <svg
-    className="absolute inset-0 w-full h-full opacity-[0.03]"
+    className="absolute inset-0 w-full h-full opacity-[0.06]"
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
       <pattern
-        id="geometric-pattern"
+        id={id}
         x="0"
         y="0"
         width="60"
@@ -45,7 +45,7 @@ const GeometricPattern = () => (
           d="M30 0L60 30L30 60L0 30Z"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth="0.8"
           className="text-primary"
         />
         <circle
@@ -54,14 +54,23 @@ const GeometricPattern = () => (
           r="8"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth="0.5"
           className="text-secondary"
+        />
+        <path
+          d="M30 15L45 30L30 45L15 30Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.4"
+          className="text-primary/50"
         />
       </pattern>
     </defs>
-    <rect width="100%" height="100%" fill="url(#geometric-pattern)" />
+    <rect width="100%" height="100%" fill={`url(#${id})`} />
   </svg>
 );
+
+export { GeometricPattern };
 
 // Diamond-shaped leader card component
 const DiamondLeaderCard = ({ 
@@ -167,31 +176,33 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
     <div className="min-h-screen pt-16">
       {/* Hero Section - Two Column Layout */}
       <section className="relative bg-gradient-to-br from-secondary via-secondary to-secondary/90 py-16 md:py-24 overflow-hidden">
-        <GeometricPattern />
+        <GeometricPattern id="hero-pattern" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left Column - Text */}
-            <div className="text-center lg:text-left animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                <span className="text-primary">University Students</span>
-                <br />
-                <span className="text-white">Representative Council</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light italic tracking-wide">
-                Bunge la Wanafunzi
-              </p>
-            </div>
-            
-            {/* Right Column - Image */}
-            <div className="flex justify-center lg:justify-end animate-fade-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-              <div className="relative">
-                <img
-                  src={fallbackImage}
-                  alt="USRC Representative"
-                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-black/30"
-                />
-                {/* Decorative elements */}
-                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+              {/* Left Column - Text */}
+              <div className="text-center lg:text-left animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                  <span className="text-primary">University Students</span>
+                  <br />
+                  <span className="text-white">Representative Council</span>
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-light italic tracking-wide">
+                  Bunge la Wanafunzi
+                </p>
+              </div>
+              
+              {/* Right Column - Image */}
+              <div className="flex justify-center lg:justify-center animate-fade-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+                <div className="relative">
+                  <img
+                    src={fallbackImage}
+                    alt="USRC Representative"
+                    className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-black/30"
+                  />
+                  {/* Decorative elements */}
+                  <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
+                </div>
               </div>
             </div>
           </div>
@@ -200,7 +211,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
 
       {/* USRC Leaders Section */}
       <section className="relative py-16 md:py-20 bg-muted/30 overflow-hidden">
-        <GeometricPattern />
+        <GeometricPattern id="leaders-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           {/* Section header */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
@@ -229,7 +240,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
 
       {/* Student Representatives Section */}
       <section className="relative py-16 md:py-24 bg-muted/30 overflow-hidden">
-        <GeometricPattern />
+        <GeometricPattern id="colleges-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           {/* Section header */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
