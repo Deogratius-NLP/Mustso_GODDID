@@ -95,20 +95,22 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
               {collegeData.name}
             </h1>
             
-            {/* Diamond image placeholder */}
+            {/* Rounded square image placeholder */}
             <div className="flex justify-center mb-6 animate-fade-up opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-              <div className="relative">
-                <div className="w-28 h-28 md:w-36 md:h-36 rotate-45 overflow-hidden bg-white border-2 border-white/30 shadow-lg">
+              <div className="relative group">
+                <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden bg-white rounded-2xl border-2 border-white/30 shadow-lg transition-all duration-300 group-hover:border-primary group-hover:shadow-xl">
                   <img
                     src={fallbackImage}
                     alt={collegeData.leader.name}
-                    className="w-full h-full object-cover -rotate-45 scale-[1.42]"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = fallbackImage;
                     }}
                   />
                 </div>
+                {/* Decorative border */}
+                <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-primary/30 rounded-2xl -z-10" />
               </div>
             </div>
             
@@ -126,13 +128,13 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto">
             {/* Departments Card */}
-            <div className="bg-muted/30 rounded-2xl overflow-hidden shadow-sm animate-fade-up opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+            <div className="bg-card rounded-2xl overflow-hidden shadow-md animate-fade-up opacity-0" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
               {collegeData.departments && collegeData.departments.length > 0 ? (
-                <div className="divide-y divide-border/50">
+                <div className="divide-y divide-border/30">
                   {collegeData.departments.map((dept, index) => (
                     <div 
                       key={index} 
-                      className="p-4 md:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+                      className="p-4 md:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-card"
                     >
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground text-sm md:text-base">
@@ -155,7 +157,7 @@ const CollegeDetailSection = ({ collegeId, onBack }: CollegeDetailSectionProps) 
                   ))}
                 </div>
               ) : (
-                <div className="p-8 text-center">
+                <div className="p-8 text-center bg-card">
                   <p className="text-muted-foreground">No department leaders have been added yet.</p>
                 </div>
               )}
