@@ -72,8 +72,8 @@ const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
 
 export { GeometricPattern };
 
-// Diamond-shaped leader card component
-const DiamondLeaderCard = ({ 
+// Rounded square leader card component
+const LeaderCard = ({ 
   name, 
   position, 
   image,
@@ -91,23 +91,25 @@ const DiamondLeaderCard = ({
       className="flex flex-col items-center animate-fade-up opacity-0"
       style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
     >
-      {/* Diamond shape container with hover effect */}
+      {/* Rounded square container with hover effect */}
       <div className="relative group">
-        <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rotate-45 overflow-hidden bg-white border-2 border-transparent shadow-lg transition-all duration-300 group-hover:border-primary group-hover:shadow-xl group-hover:shadow-primary/20">
+        <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-44 lg:h-44 overflow-hidden bg-white rounded-2xl border-2 border-transparent shadow-lg transition-all duration-300 group-hover:border-primary group-hover:shadow-xl group-hover:shadow-primary/20">
           <img
             src={imageSrc}
             alt={name}
-            className="w-full h-full object-cover -rotate-45 scale-[1.42]"
+            className="w-full h-full object-cover"
             loading="lazy"
             onError={(e) => {
               (e.target as HTMLImageElement).src = fallbackImage;
             }}
           />
         </div>
+        {/* Decorative border on hover */}
+        <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-primary/0 rounded-2xl -z-10 transition-all duration-300 group-hover:border-primary/30" />
       </div>
       
       {/* Position title with white rounded rectangle */}
-      <div className="mt-6 md:mt-8 text-center">
+      <div className="mt-5 md:mt-6 text-center">
         <span className="inline-block bg-white/95 px-4 py-1.5 rounded-full shadow-sm">
           <p className="text-xs sm:text-sm text-secondary font-semibold uppercase tracking-wide">{position}</p>
         </span>
@@ -226,7 +228,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
           {/* Leader cards in horizontal layout */}
           <div className="flex justify-center items-start gap-8 md:gap-12 lg:gap-16 flex-wrap">
             {usrcLeaders.map((leader, index) => (
-              <DiamondLeaderCard
+              <LeaderCard
                 key={leader.id}
                 name={leader.name}
                 position={leader.title}
