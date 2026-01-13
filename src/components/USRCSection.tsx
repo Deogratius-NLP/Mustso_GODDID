@@ -284,7 +284,6 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
       >
         {/* Dark blue overlay - matching landing page transparency */}
         <div className="absolute inset-0 bg-secondary/70" />
-        <GeometricPattern id="hero-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
