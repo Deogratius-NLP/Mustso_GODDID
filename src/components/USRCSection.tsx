@@ -345,35 +345,50 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
         </div>
       </section>
 
-      {/* Student Representatives Section - Dark Blue with Grey Pattern */}
+      {/* Student Representatives Section - Dark Blue with Fixed Background */}
       <section 
         ref={collegesSectionRef}
-        className="relative py-16 md:py-24 bg-secondary overflow-hidden"
+        className="relative min-h-screen"
       >
-        <GreyGeometricPattern id="colleges-pattern" />
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Section header */}
-          <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
-              Student Representatives
-            </h2>
-            <p className="text-white/60 text-base italic">
-              "Find your leader easily based on your college or location"
-            </p>
-          </div>
-          
-          {/* Colleges grid with stacking effect */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
-            {allCards.map((card, index) => (
-              <StackingCollegeCard
-                key={card.id}
-                college={card}
-                onClick={() => onSelectCollege(card.id)}
-                index={index}
-                totalCards={allCards.length}
-                scrollProgress={scrollProgress}
-              />
-            ))}
+        {/* Fixed background layer */}
+        <div className="fixed inset-0 bg-secondary -z-10 pointer-events-none" style={{ clipPath: 'inset(0)' }}>
+          <GreyGeometricPattern id="colleges-pattern" />
+        </div>
+        
+        {/* Scrolling content */}
+        <div className="relative z-10 py-16 md:py-24 bg-secondary">
+          <GreyGeometricPattern id="colleges-pattern-scroll" />
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section header */}
+            <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+                Student Representatives
+              </h2>
+              <p className="text-white/60 text-base italic">
+                "Find your leader easily based on your college or location"
+              </p>
+            </div>
+            
+            {/* Colleges grid - cards scroll up over fixed background */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
+              {allCards.map((card, index) => (
+                <div 
+                  key={card.id}
+                  className="transform transition-transform duration-300"
+                  style={{
+                    transform: `translateY(${Math.max(0, (1 - scrollProgress) * 50 * (index % 3))}px)`,
+                  }}
+                >
+                  <StackingCollegeCard
+                    college={card}
+                    onClick={() => onSelectCollege(card.id)}
+                    index={index}
+                    totalCards={allCards.length}
+                    scrollProgress={scrollProgress}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
