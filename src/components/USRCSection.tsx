@@ -27,10 +27,10 @@ interface USRCLeader {
   image?: string;
 }
 
-// SVG Background Pattern Component - Primary colors
+// SVG Background Pattern Component - White slanted lines for visibility
 const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
   <svg
-    className="absolute inset-0 w-full h-full opacity-[0.06]"
+    className="absolute inset-0 w-full h-full opacity-[0.15]"
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
@@ -38,32 +38,34 @@ const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
         id={id}
         x="0"
         y="0"
-        width="60"
-        height="60"
+        width="40"
+        height="40"
         patternUnits="userSpaceOnUse"
+        patternTransform="rotate(-30)"
       >
-        <path
-          d="M30 0L60 30L30 60L0 30Z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.8"
-          className="text-primary"
+        {/* Slanted parallel lines */}
+        <line
+          x1="0"
+          y1="0"
+          x2="40"
+          y2="0"
+          stroke="white"
+          strokeWidth="1"
         />
-        <circle
-          cx="30"
-          cy="30"
-          r="8"
-          fill="none"
-          stroke="currentColor"
+        <line
+          x1="0"
+          y1="20"
+          x2="40"
+          y2="20"
+          stroke="white"
           strokeWidth="0.5"
-          className="text-secondary"
         />
+        {/* Small diamond accents */}
         <path
-          d="M30 15L45 30L30 45L15 30Z"
+          d="M20 5L25 10L20 15L15 10Z"
           fill="none"
-          stroke="currentColor"
+          stroke="white"
           strokeWidth="0.4"
-          className="text-primary/50"
         />
       </pattern>
     </defs>
@@ -71,10 +73,10 @@ const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
   </svg>
 );
 
-// SVG Background Pattern Component - Grey colors for dark backgrounds
+// SVG Background Pattern Component - White slanted for dark backgrounds
 const GreyGeometricPattern = ({ id = "grey-geometric-pattern" }: { id?: string }) => (
   <svg
-    className="absolute inset-0 w-full h-full opacity-[0.08]"
+    className="absolute inset-0 w-full h-full opacity-[0.12]"
     xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
@@ -82,28 +84,33 @@ const GreyGeometricPattern = ({ id = "grey-geometric-pattern" }: { id?: string }
         id={id}
         x="0"
         y="0"
-        width="60"
-        height="60"
+        width="40"
+        height="40"
         patternUnits="userSpaceOnUse"
+        patternTransform="rotate(-30)"
       >
-        <path
-          d="M30 0L60 30L30 60L0 30Z"
-          fill="none"
-          stroke="#9CA3AF"
-          strokeWidth="0.8"
+        {/* Slanted parallel lines */}
+        <line
+          x1="0"
+          y1="0"
+          x2="40"
+          y2="0"
+          stroke="white"
+          strokeWidth="1"
         />
-        <circle
-          cx="30"
-          cy="30"
-          r="8"
-          fill="none"
-          stroke="#6B7280"
+        <line
+          x1="0"
+          y1="20"
+          x2="40"
+          y2="20"
+          stroke="white"
           strokeWidth="0.5"
         />
+        {/* Small diamond accents */}
         <path
-          d="M30 15L45 30L30 45L15 30Z"
+          d="M20 5L25 10L20 15L15 10Z"
           fill="none"
-          stroke="#D1D5DB"
+          stroke="white"
           strokeWidth="0.4"
         />
       </pattern>
@@ -275,8 +282,8 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
           backgroundPosition: 'center',
         }}
       >
-        {/* Dark blue overlay */}
-        <div className="absolute inset-0 bg-secondary/85" />
+        {/* Dark blue overlay - matching landing page transparency */}
+        <div className="absolute inset-0 bg-secondary/70" />
         <GeometricPattern id="hero-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
