@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { useEffect, useRef, useState } from 'react';
 import mustsoData from '@/data/mustsoData.json';
 import fallbackImage from '@/assets/Gemini_Generated_Image_xgcqpnxgcqpnxgcq.png';
 
@@ -26,7 +27,7 @@ interface USRCLeader {
   image?: string;
 }
 
-// SVG Background Pattern Component
+// SVG Background Pattern Component - Primary colors
 const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
   <svg
     className="absolute inset-0 w-full h-full opacity-[0.06]"
@@ -70,7 +71,48 @@ const GeometricPattern = ({ id = "geometric-pattern" }: { id?: string }) => (
   </svg>
 );
 
-export { GeometricPattern };
+// SVG Background Pattern Component - Grey colors for dark backgrounds
+const GreyGeometricPattern = ({ id = "grey-geometric-pattern" }: { id?: string }) => (
+  <svg
+    className="absolute inset-0 w-full h-full opacity-[0.08]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern
+        id={id}
+        x="0"
+        y="0"
+        width="60"
+        height="60"
+        patternUnits="userSpaceOnUse"
+      >
+        <path
+          d="M30 0L60 30L30 60L0 30Z"
+          fill="none"
+          stroke="#9CA3AF"
+          strokeWidth="0.8"
+        />
+        <circle
+          cx="30"
+          cy="30"
+          r="8"
+          fill="none"
+          stroke="#6B7280"
+          strokeWidth="0.5"
+        />
+        <path
+          d="M30 15L45 30L30 45L15 30Z"
+          fill="none"
+          stroke="#D1D5DB"
+          strokeWidth="0.4"
+        />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#${id})`} />
+  </svg>
+);
+
+export { GeometricPattern, GreyGeometricPattern };
 
 // Rounded square leader card component
 const LeaderCard = ({ 
@@ -118,15 +160,19 @@ const LeaderCard = ({
   );
 };
 
-// College card component
-const CollegeCard = ({ 
+// Stacking college card component with scroll effect
+const StackingCollegeCard = ({ 
   college,
   onClick,
-  animationDelay = 0 
+  index,
+  totalCards,
+  scrollProgress
 }: { 
-  college: College;
+  college: { id: string; name: string };
   onClick: () => void;
-  animationDelay?: number;
+  index: number;
+  totalCards: number;
+  scrollProgress: number;
 }) => {
   const shortName = college.id.toUpperCase();
   
@@ -137,12 +183,26 @@ const CollegeCard = ({
     shortName === 'COHBS' ? 'CoHBS' :
     shortName === 'COSTE' ? 'CoSTE' :
     shortName;
+
+  // Calculate the card's position in the stack based on scroll progress
+  const cardProgress = scrollProgress * totalCards;
+  const cardOffset = index - cardProgress;
   
+  // Calculate transforms
+  const translateY = Math.max(0, cardOffset * 20); // Stack offset
+  const scale = Math.max(0.85, 1 - Math.max(0, cardOffset) * 0.03);
+  const opacity = Math.max(0, Math.min(1, 1 - Math.max(0, cardOffset - (totalCards - 2)) * 0.5));
+  const zIndex = totalCards - index;
+
   return (
     <button
       onClick={onClick}
-      className="w-full animate-fade-up opacity-0"
-      style={{ animationDelay: `${animationDelay}s`, animationFillMode: 'forwards' }}
+      className="w-full transition-all duration-300 ease-out"
+      style={{ 
+        transform: `translateY(${translateY}px) scale(${scale})`,
+        opacity,
+        zIndex,
+      }}
     >
       <Card 
         className="group cursor-pointer overflow-hidden bg-card border border-border/30 shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
@@ -167,6 +227,8 @@ interface USRCSectionProps {
 const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
   const usrcLeaders = mustsoData.usrcLeaders as USRCLeader[];
   const colleges = mustsoData.colleges as College[];
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const collegesSectionRef = useRef<HTMLDivElement>(null);
 
   const additionalAreas = [
     { id: 'mrcc', name: 'MRCC' },
@@ -174,14 +236,51 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
     { id: 'in-campus', name: 'In-Campus' },
   ];
 
+  const allCards = [
+    ...colleges.map(c => ({ id: c.id, name: c.name })),
+    ...additionalAreas
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!collegesSectionRef.current) return;
+      
+      const section = collegesSectionRef.current;
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate scroll progress within the section
+      const scrollStart = viewportHeight * 0.3;
+      const scrollEnd = -sectionHeight + viewportHeight * 0.7;
+      
+      const progress = (scrollStart - rect.top) / (scrollStart - scrollEnd);
+      setScrollProgress(Math.max(0, Math.min(1, progress)));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section - Two Column Layout */}
-      <section className="relative bg-gradient-to-br from-secondary via-secondary to-secondary/90 py-16 md:py-24 overflow-hidden">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="relative py-16 md:py-24 overflow-hidden"
+        style={{
+          backgroundImage: `url('/usrc-hero-bg.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Dark blue overlay */}
+        <div className="absolute inset-0 bg-secondary/85" />
         <GeometricPattern id="hero-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Column - Text */}
               <div className="text-center lg:text-left animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
@@ -211,7 +310,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
         </div>
       </section>
 
-      {/* USRC Leaders Section */}
+      {/* USRC Leaders Section - No changes */}
       <section className="relative py-16 md:py-20 bg-muted/30 overflow-hidden">
         <GeometricPattern id="leaders-pattern" />
         <div className="container mx-auto px-4 relative z-10">
@@ -240,49 +339,34 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
         </div>
       </section>
 
-      {/* Student Representatives Section */}
-      <section className="relative py-16 md:py-24 bg-muted/30 overflow-hidden">
-        <GeometricPattern id="colleges-pattern" />
+      {/* Student Representatives Section - Dark Blue with Grey Pattern */}
+      <section 
+        ref={collegesSectionRef}
+        className="relative py-16 md:py-24 bg-secondary overflow-hidden"
+      >
+        <GreyGeometricPattern id="colleges-pattern" />
         <div className="container mx-auto px-4 relative z-10">
           {/* Section header */}
           <div className="text-center mb-12 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
               Student Representatives
             </h2>
-            <p className="text-muted-foreground text-base italic">
+            <p className="text-white/60 text-base italic">
               "Find your leader easily based on your college or location"
             </p>
           </div>
           
-          {/* Colleges grid */}
+          {/* Colleges grid with stacking effect */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 max-w-6xl mx-auto">
-            {colleges.map((college, index) => (
-              <CollegeCard
-                key={college.id}
-                college={college}
-                onClick={() => onSelectCollege(college.id)}
-                animationDelay={0.1 + index * 0.05}
+            {allCards.map((card, index) => (
+              <StackingCollegeCard
+                key={card.id}
+                college={card}
+                onClick={() => onSelectCollege(card.id)}
+                index={index}
+                totalCards={allCards.length}
+                scrollProgress={scrollProgress}
               />
-            ))}
-            {/* Additional areas */}
-            {additionalAreas.map((area, index) => (
-              <button
-                key={area.id}
-                onClick={() => onSelectCollege(area.id)}
-                className="w-full animate-fade-up opacity-0"
-                style={{ animationDelay: `${0.1 + (colleges.length + index) * 0.05}s`, animationFillMode: 'forwards' }}
-              >
-                <Card className="group cursor-pointer overflow-hidden bg-card border border-border/30 shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
-                  <CardContent className="p-5 md:p-6 lg:p-7 flex flex-col items-center justify-center min-h-[100px] md:min-h-[120px] gap-1.5">
-                    <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {area.name}
-                    </h3>
-                    <span className="text-xs md:text-sm text-primary/70 font-medium group-hover:text-primary transition-colors">
-                      View Leaders
-                    </span>
-                  </CardContent>
-                </Card>
-              </button>
             ))}
           </div>
         </div>
