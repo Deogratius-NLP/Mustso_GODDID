@@ -237,12 +237,6 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const collegesSectionRef = useRef<HTMLDivElement>(null);
 
-  const additionalAreas = [
-    { id: 'mrcc', name: 'MRCC' },
-    { id: 'off-campus', name: 'Off-Campus' },
-    { id: 'in-campus', name: 'In-Campus' },
-  ];
-
   const allCards = [
     ...colleges.map(c => ({ id: c.id, name: c.name })),
     ...additionalAreas
