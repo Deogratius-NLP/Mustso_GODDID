@@ -297,7 +297,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
               <div className="flex justify-center lg:justify-center animate-fade-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                 <div className="relative">
                   <img
-                    src={fallbackImage}
+                    src={/Spika.jpg}
                     alt="USRC Representative"
                     className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl shadow-black/30"
                   />
