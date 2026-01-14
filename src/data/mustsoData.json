@@ -7,22 +7,22 @@
     { "id": 5, "name": "Hon. Venance", "title": "Permanent Secretary - Prime Minister's Office", "image": "/Venance.png" }
   ],
   "usrcLeaders": [
-    { "id": 1, "name": "Hon. Robert Mwakasaka", "title": "Council Speaker" },
-    { "id": 2, "name": "Hon. Fatima Hassan", "title": "Deputy Speaker" },
+    { "id": 1, "name": "Hon. EMMANUEL MWIRUMBE", "title": "Council Speaker" },
+    { "id": 2, "name": "Hon. JASMINE KOSHIMA", "title": "Deputy Speaker" },
     { "id": 3, "name": "Hon. Emmanuel Kileo", "title": "Secretary - USRC" },
-    { "id": 4, "name": "Hon. Janet Mwenda", "title": "Chairman - USRC" }
+    { "id": 4, "name": "Hon. DALTON ZACHARIA", "title": "Chairman - USRC" }
   ],
   "specialRepresentatives": [
-    { "id": 1, "name": "Hon. Alex Mbwambo", "title": "Special Representative" },
-    { "id": 2, "name": "Hon. Christina Mushi", "title": "Special Representative" },
-    { "id": 3, "name": "Hon. Daniel Kitomari", "title": "Special Representative" },
-    { "id": 4, "name": "Hon. Elizabeth Mwita", "title": "Special Representative" },
-    { "id": 5, "name": "Hon. Francis Kijazi", "title": "Special Representative" },
-    { "id": 6, "name": "Hon. Gloria Masanja", "title": "Special Representative" },
-    { "id": 7, "name": "Hon. Henry Mshana", "title": "Special Representative" },
-    { "id": 8, "name": "Hon. Irene Lwambo", "title": "Special Representative" },
+    { "id": 1, "name": "Hon. PETRO DANIEL", "title": "Special Representative" },
+    { "id": 2, "name": "Hon. HATIBU MGAZA", "title": "Special Representative" },
+    { "id": 3, "name": "Hon. PAUL KALEGA", "title": "Special Representative" },
+    { "id": 4, "name": "Hon. GODWIN LUKIO", "title": "Special Representative" },
+    { "id": 5, "name": "Hon. ISRAEL LUHONDO", "title": "Special Representative" },
+    { "id": 6, "name": "Hon. ATHUMINI MCHUNGA", "title": "Special Representative" },
+    { "id": 7, "name": "Hon. JOHN PAUL", "title": "Special Representative" },
+    { "id": 8, "name": "Hon. FAHAD NGARE", "title": "Special Representative" },
     { "id": 9, "name": "Hon. Joseph Makundi", "title": "Special Representative" },
-    { "id": 10, "name": "Hon. Kelvin Ngowi", "title": "Special Representative" }
+    { "id": 10, "name": "Hon. YUSUPH MSUYA", "title": "Special Representative" }
   ],
   "judiciaryTopLeaders": [
     { "id": 1, "name": "Hon. Justice Samwel Mwakibinga", "title": "Chief Justice" },
@@ -210,69 +210,105 @@
     {
       "id": "coict",
       "name": "College of Information and Communication Technology (CoICT)",
-      "leader": { "name": "Dr. Emmanuel Mwasaga", "title": "College Representative", "phone": "0755 111 222" },
+      "leader": { "name": "RAMADHAN R. KASEGEZYA", "title": "College Representative", "phone": "0695 388 563" },
       "departments": [
-        { "name": "Department of Information Systems and Technology", "leader": { "name": "Alex Mwakabela", "phone": "0755 111 223" } },
-        { "name": "Department of Computer Science and Engineering", "leader": { "name": "Benedict Mwakaje", "phone": "0755 111 224" } },
-        { "name": "Department of Electronics and Telecommunications", "leader": { "name": "Clara Mwakasitu", "phone": "0755 111 225" } },
-        { "name": "Department of Content Engineering and Multimedia", "leader": { "name": "Denis Mwakalinga", "phone": "0755 111 226" } },
-        { "name": "Department of Informatics", "leader": { "name": "Eva Mwakakeja", "phone": "0755 111 227" } }
+        { "name": "Department of Information Systems and Technology BACHELOR", "leader": { "name": "JONAS EMMANUEL BUKUKU", "phone": "0758 555 503" } },
+        { "name": "Department of Information Systems and Technology DIPLOMA", "leader": { "name": "NOURAYN SAID ALI", "phone": "0774 351 895" } },
+        { "name": "Department of Computer Science and Engineering BACHELOR", "leader": { "name": "BENARD JOSEPH", "phone": "0676 203 734" } },
+        { "name": "Department of Computer Science and Engineering DIPLOMA", "leader": { "name": "JOSEPH LAURENT MARWA", "phone": "0679 508 176" } },
+        { "name": "Department of Electronics and Telecommunications BACHELOR", "leader": { "name": "ALFRED CHAMPION", "phone": "0782 744 820" } },
+        { "name": "Department of Electronics and Telecommunications DIPLOMA", "leader": { "name": "TALIK S", "phone": "0616820668" } },
+        { "name": "Department of Informatics", "leader": { "name": "ELIABU ERICK PATRICK", "phone": "0694 862 037" } },
+        { "name": "Female Representative", "leader": { "name": "AGATHA JONAS AUGUSTINO", "phone": "0713 499 413" } }
       ]
     },
     {
       "id": "cet",
       "name": "College of Engineering and Technology (CET)",
-      "leader": { "name": "Dr. Francis Mwakatanga", "title": "College Representative", "phone": "0755 222 333" },
+      "leader": { "name": "Dr. OLIVO SAULO HAULE", "title": "College Representative", "phone": "0620 360 113" },
       "departments": [
-        { "name": "Department of Electrical and Power Engineering", "leader": { "name": "George Mwakaloka", "phone": "0755 222 334" } },
-        { "name": "Department of Civil Engineering", "leader": { "name": "Helen Mwakateba", "phone": "0755 222 335" } },
-        { "name": "Department of Chemical Processing and Environmental Engineering", "leader": { "name": "Isaac Mwakalambo", "phone": "0755 222 336" } },
-        { "name": "Department of Geosciences and Mining Technology", "leader": { "name": "Jane Mwakabaka", "phone": "0755 222 337" } },
-        { "name": "Department of Mechanical and Industrial Engineering", "leader": { "name": "Ken Mwakasila", "phone": "0755 222 338" } }
+        { "name": "Department of Electrical and Power Engineering BACHELOR", "leader": { "name": "GREGORY VENANCE KIMARIO", "phone": "0688 695 107" } },
+        { "name": "Department of Electrical and Power Engineering DIPLOMA", "leader": { "name": "KIRABA MOHAMMED KERABA", "phone": "0675 906 7897" } },
+        { "name": "Department of Civil Engineering BACHELOR", "leader": { "name": "CHARLES MAJOR MADEGWA", "phone": "0758 421 782" } },
+        { "name": "Department of Civil Engineering DIPLOMA", "leader": { "name": "BENETSON JASTINE JOASI", "phone": "0757 361 910" } },
+        { "name": "Department of Geosciences and Mining Technology DIPLOMA", "leader": { "name": "ABBAS MASOUD IDD", "phone": "0788 188 097" } },
+        { "name": "Department of Mechanical and Industrial Engineering BACHELOR", "leader": { "name": "JOSEPH MABIMBI MAGELEJA", "phone": "0753 384 961" } },
+        { "name": "Department of Mechanical and Industrial Engineering DIPLOMA", "leader": { "name": "AGRAYSON JACKSON KYANDO", "phone": "0675 625 041" } },
+        { "name": "Female Representative", "leader": { "name": "CAROLINE PETER THOMAS", "phone": "0767 430 453" } }
       ]
     },
     {
       "id": "cohbs",
       "name": "College of Humanities and Business Studies (CoHBS)",
-      "leader": { "name": "Dr. Lucy Mwakatuhu", "title": "College Representative", "phone": "0755 333 444" },
+      "leader": { "name": "REUBEN NGIKE", "title": "College Representative", "phone": "0769 381 975" },
       "departments": [
-        { "name": "Department of Business Management", "leader": { "name": "Mark Mwakatuja", "phone": "0755 333 445" } },
-        { "name": "Department of Humanities", "leader": { "name": "Nancy Mwakabela", "phone": "0755 333 446" } },
-        { "name": "Department of Law", "leader": { "name": "Oscar Mwakajila", "phone": "0755 333 447" } }
+        { "name": "Department of Business Management BACHELOR", "leader": { "name": "REAGAN BAKARI JUMA", "phone": "0613 859 327" } },
+        { "name": "Female Representative", "leader": { "name": "AMINA RIZIKI MUSTAFA", "phone": "0756 693 221" } }
       ]
     },
     {
       "id": "coact",
       "name": "College of Architecture, Construction and Technology (CoACT)",
-      "leader": { "name": "Dr. Peter Mwakaleka", "title": "College Representative", "phone": "0755 444 555" },
+      "leader": { "name": "JOEL LIGSON KAPOTA", "title": "College Representative", "phone": "0742 131 067" },
       "departments": [
-        { "name": "Department of Architecture and Art Design", "leader": { "name": "Queen Mwakatuha", "phone": "0755 444 556" } },
-        { "name": "Department of Construction Management and Technology", "leader": { "name": "Robert Mwakajeba", "phone": "0755 444 557" } }
+        { "name": "Department of Architecture and Art Design", "leader": { "name": "RAPHAEL RAYMOND DOMICIAN", "phone": "0693 149 495" } },
+        { "name": "Female Representative", "leader": { "name": "BENADETHA KENEDY DAUD", "phone": "0699 141 743" } }
       ]
     },
     {
       "id": "coste",
       "name": "College of Science and Technical Education (CoSTE)",
-      "leader": { "name": "Dr. Susan Mwakalela", "title": "College Representative", "phone": "0755 555 666" },
+      "leader": { "name": "FRANCES ANTONY NTAHEGA", "title": "College Representative", "phone": "0781 224 520" },
       "departments": [
-        { "name": "Department of Mathematics and Statistics", "leader": { "name": "Thomas Mwakabusu", "phone": "0755 555 667" } },
-        { "name": "Department of Natural Sciences", "leader": { "name": "Ursula Mwakakuba", "phone": "0755 555 668" } },
-        { "name": "Department of Applied Sciences", "leader": { "name": "Victor Mwakalusa", "phone": "0755 555 669" } },
-        { "name": "Department of Medical Sciences and Technology", "leader": { "name": "Wendy Mwakatuma", "phone": "0755 555 670" } },
-        { "name": "Department of Technical Education", "leader": { "name": "Xavier Mwakasuva", "phone": "0755 555 671" } },
-        { "name": "Department of Earth Sciences", "leader": { "name": "Yvonne Mwakabuja", "phone": "0755 555 672" } }
+        { "name": "Department of Natural Sciences", "leader": { "name": "SAMWEL MWAKANYAMALE", "phone": "0755 071 290" } },
+        { "name": "Department of Applied Sciences BACHELOR", "leader": { "name": "ELIA JONAS SESHAHU", "phone": "0742 472 054" } },
+        { "name": "Department of Applied Sciences DIPLOMA", "leader": { "name": "EMMANUEL WILSON MIRUMBE", "phone": "0764 451 209" } },
+        { "name": "Department of Medical Sciences and Technology", "leader": { "name": "ABEDNEGO ALBERT SASI", "phone": "0757 106 722" } },
+        { "name": "Department of Technical Education BACHELOR", "leader": { "name": "BARAKA SELEMANI MIKAMBA", "phone": "0615 240 627" } },
+        { "name": "Department of Technical Education DIPLOMA", "leader": { "name": "DERICK YOSSE NDOSSY", "phone": "0658 977 842" } },
+        { "name": "Department of Earth Sciences", "leader": { "name": "MECHACK HERMAN SHAYO", "phone": "0613 942 003" } },
+        { "name": "Female Representative", "leader": { "name": "GRACA JONEL KILEVA", "phone": "0686 238 170" } }
       ]
     },
     {
       "id": "coast",
       "name": "College of Agricultural Science and Technology (CoAST)",
-      "leader": { "name": "Dr. Zachary Mwakaleta", "title": "College Representative", "phone": "0755 666 777" },
+      "leader": { "name": "SIMON LAWRENCE MASANJA", "title": "College Representative", "phone": "0685 348 340" },
       "departments": [
-        { "name": "Department of Agronomy and Soil Science", "leader": { "name": "Adam Mwakakela", "phone": "0755 666 778" } },
-        { "name": "Department of Natural Resources", "leader": { "name": "Charles Mwakabeta", "phone": "0755 666 780" } },
-        { "name": "Department of Veterinary Medicine and Animal Science", "leader": { "name": "Harun Moshi", "phone": "0755 666 783" } },
-        { "name": "Department of Food Science and Technology", "leader": { "name": "Dorothy Mwakabuja", "phone": "0755 666 781" } },
-        { "name": "Department of Crop Science and Horticulture", "leader": { "name": "Edward Mwakatela", "phone": "0755 666 782" } }
+        { "name": "Department of Food Science and Technology", "leader": { "name": "ALBAN MUGISHA KIGOYE", "phone": "0676 828 617" } },
+        { "name": "Department of Food Science and Technology", "leader": { "name": "RAPHAEL BAHATI KULAGA", "phone": "0676 828 617" } },
+        { "name": "Female Representative", "leader": { "name": "ERIKA APOLIN MSOMA", "phone": "0626 446 794" } }
+      ]
+    }
+    {
+      "id": "incampus",
+      "name": "IN - CAMPUS REPRESENTATIVES",
+      "leader": { "name": "DALTON ZACHARIA MADAHA", "title": "College Representative", "phone": "0754 504 390" },
+      "departments": [
+        { "name": "NEW HOSTEL B", "leader": { "name": "JOSHUA ELIAKIM TUWATI", "phone": "0655 030 023" } },
+        { "name": "NEW HOSTEL A", "leader": { "name": "EVARADA UNDULE EMMANUELY", "phone": "0756 419 584" } },
+        { "name": "8 C", "leader": { "name": "IRENE ANISTASIUS NGATATA", "phone": "0678 200 917" } },
+        { "name": "8 D", "leader": { "name": "NEEMA NICHOLAUS MWAIKAMBO", "phone": "0769 055 230" } },
+        { "name": "6 A", "leader": { "name": "DALTON ZACHARIA MADAHA", "phone": "0754 504 390" } }
+      ]
+    }
+    {
+      "id": "offcampus",
+      "name": "OFF - CAMPUS REPRESENTATIVES",
+      "leader": { "name": "EMILIAN ALI SHILEKI", "title": "College Representative", "phone": "0769 769 459" },
+      "departments": [
+        { "name": "WESTERN ZONE", "leader": { "name": "EMILIAN ALI SHILEKI", "phone": "0769 769 459" } },
+        { "name": "EASTERN ZONE", "leader": { "name": "JACKSON FREDRICK SIMPAMBA", "phone": "0672 342 565" } },
+        { "name": "CENTRAL ZONE", "leader": { "name": "ALOYCE FRUMENCE CHALE", "phone": "0763 236 057" } },
+        { "name": "Female Representative", "leader": { "name": "WINFRIDA SAMWEL SAMSON", "phone": "0683 288 693" } }
+      ]
+    }
+    {
+      "id": "mrcc",
+      "name": "MUST Rukwa Capmus College (MRCC)",
+      "leader": { "name": "JUMA MOHAMMED JUMA", "title": "College Representative", "phone": "0693 482 980" },
+      "departments": [
+        { "name": "Female Representative", "leader": { "name": "MIRIAM ONESMO NOA", "phone": "0760 272 562" } }
       ]
     }
   ],
