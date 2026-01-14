@@ -279,7 +279,7 @@
         { "name": "Department of Food Science and Technology", "leader": { "name": "RAPHAEL BAHATI KULAGA", "phone": "0676 828 617" } },
         { "name": "Female Representative", "leader": { "name": "ERIKA APOLIN MSOMA", "phone": "0626 446 794" } }
       ]
-    }
+    },
     {
       "id": "incampus",
       "name": "IN - CAMPUS REPRESENTATIVES",
@@ -291,7 +291,7 @@
         { "name": "8 D", "leader": { "name": "NEEMA NICHOLAUS MWAIKAMBO", "phone": "0769 055 230" } },
         { "name": "6 A", "leader": { "name": "DALTON ZACHARIA MADAHA", "phone": "0754 504 390" } }
       ]
-    }
+    },
     {
       "id": "offcampus",
       "name": "OFF - CAMPUS REPRESENTATIVES",
@@ -302,7 +302,7 @@
         { "name": "CENTRAL ZONE", "leader": { "name": "ALOYCE FRUMENCE CHALE", "phone": "0763 236 057" } },
         { "name": "Female Representative", "leader": { "name": "WINFRIDA SAMWEL SAMSON", "phone": "0683 288 693" } }
       ]
-    }
+    },
     {
       "id": "mrcc",
       "name": "MUST Rukwa Capmus College (MRCC)",
