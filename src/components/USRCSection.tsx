@@ -121,8 +121,8 @@ const GreyGeometricPattern = ({ id = "grey-geometric-pattern" }: { id?: string }
 
 export { GeometricPattern, GreyGeometricPattern };
 
-// Rounded square leader card component
-const LeaderCard = ({ 
+// Rounded square leader card component - matches TopExecutivesSection pattern
+const USRCLeaderCard = ({ 
   name, 
   position, 
   image,
@@ -157,10 +157,11 @@ const LeaderCard = ({
         <div className="absolute -bottom-2 -right-2 w-full h-full border-2 border-primary/0 rounded-2xl -z-10 transition-all duration-300 group-hover:border-primary/30" />
       </div>
       
-      {/* Position title with white rounded rectangle */}
+      {/* Name and Position with white rounded rectangle */}
       <div className="mt-5 md:mt-6 text-center">
-        <span className="inline-block bg-white/95 px-4 py-1.5 rounded-full shadow-sm">
-          <p className="text-xs sm:text-sm text-secondary font-semibold uppercase tracking-wide">{position}</p>
+        <span className="inline-block bg-white/95 px-4 py-2 rounded-full shadow-sm">
+          <p className="text-sm sm:text-base text-secondary font-bold">{name}</p>
+          <p className="text-xs sm:text-sm text-primary font-semibold uppercase tracking-wide">{position}</p>
         </span>
       </div>
     </div>
@@ -237,10 +238,8 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const collegesSectionRef = useRef<HTMLDivElement>(null);
 
-  const allCards = [
-    ...colleges.map(c => ({ id: c.id, name: c.name })),
-    ...additionalAreas
-  ];
+  // MRCC, Off-Campus, In-Campus are now in the colleges array in mustsoData.json
+  const allCards = colleges.map(c => ({ id: c.id, name: c.name }));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -328,7 +327,7 @@ const USRCSection = ({ onSelectCollege }: USRCSectionProps) => {
           {/* Leader cards in horizontal layout */}
           <div className="flex justify-center items-start gap-8 md:gap-12 lg:gap-16 flex-wrap">
             {usrcLeaders.map((leader, index) => (
-              <LeaderCard
+              <USRCLeaderCard
                 key={leader.id}
                 name={leader.name}
                 position={leader.title}
