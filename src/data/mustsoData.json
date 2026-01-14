@@ -225,10 +225,10 @@
     {
       "id": "cet",
       "name": "College of Engineering and Technology (CET)",
-      "leader": { "name": "Dr. OLIVO SAULO HAULE", "title": "College Representative", "phone": "0620 360 113" },
+      "leader": { "name": "OLIVO SAULO HAULE", "title": "College Representative", "phone": "0620 360 113" },
       "departments": [
         { "name": "Department of Electrical and Power Engineering BACHELOR", "leader": { "name": "GREGORY VENANCE KIMARIO", "phone": "0688 695 107" } },
-        { "name": "Department of Electrical and Power Engineering DIPLOMA", "leader": { "name": "KIRABA MOHAMMED KERABA", "phone": "0675 906 7897" } },
+        { "name": "Department of Electrical and Power Engineering DIPLOMA", "leader": { "name": "KIRABA MOHAMMED KERABA", "phone": "0675 906 789" } },
         { "name": "Department of Civil Engineering BACHELOR", "leader": { "name": "CHARLES MAJOR MADEGWA", "phone": "0758 421 782" } },
         { "name": "Department of Civil Engineering DIPLOMA", "leader": { "name": "BENETSON JASTINE JOASI", "phone": "0757 361 910" } },
         { "name": "Department of Geosciences and Mining Technology DIPLOMA", "leader": { "name": "ABBAS MASOUD IDD", "phone": "0788 188 097" } },
