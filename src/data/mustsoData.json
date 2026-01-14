@@ -279,6 +279,37 @@
         { "name": "Department of Food Science and Technology", "leader": { "name": "RAPHAEL BAHATI KULAGA", "phone": "0676 828 617" } },
         { "name": "Female Representative", "leader": { "name": "ERIKA APOLIN MSOMA", "phone": "0626 446 794" } }
       ]
+    },
+    {
+      "id": "incampus",
+      "name": "IN - CAMPUS REPRESENTATIVES",
+      "leader": { "name": "DALTON ZACHARIA MADAHA", "title": "College Representative", "phone": "0754 504 390" },
+      "departments": [
+        { "name": "NEW HOSTEL B", "leader": { "name": "JOSHUA ELIAKIM TUWATI", "phone": "0655 030 023" } },
+        { "name": "NEW HOSTEL A", "leader": { "name": "EVARADA UNDULE EMMANUELY", "phone": "0756 419 584" } },
+        { "name": "8 C", "leader": { "name": "IRENE ANISTASIUS NGATATA", "phone": "0678 200 917" } },
+        { "name": "8 D", "leader": { "name": "NEEMA NICHOLAUS MWAIKAMBO", "phone": "0769 055 230" } },
+        { "name": "6 A", "leader": { "name": "DALTON ZACHARIA MADAHA", "phone": "0754 504 390" } }
+      ]
+    },
+    {
+      "id": "offcampus",
+      "name": "OFF - CAMPUS REPRESENTATIVES",
+      "leader": { "name": "EMILIAN ALI SHILEKI", "title": "College Representative", "phone": "0769 769 459" },
+      "departments": [
+        { "name": "WESTERN ZONE", "leader": { "name": "EMILIAN ALI SHILEKI", "phone": "0769 769 459" } },
+        { "name": "EASTERN ZONE", "leader": { "name": "JACKSON FREDRICK SIMPAMBA", "phone": "0672 342 565" } },
+        { "name": "CENTRAL ZONE", "leader": { "name": "ALOYCE FRUMENCE CHALE", "phone": "0763 236 057" } },
+        { "name": "Female Representative", "leader": { "name": "WINFRIDA SAMWEL SAMSON", "phone": "0683 288 693" } }
+      ]
+    },
+    {
+      "id": "mrcc",
+      "name": "MUST Rukwa Campus College (MRCC)",
+      "leader": { "name": "JUMA MOHAMMED JUMA", "title": "College Representative", "phone": "0693 482 980" },
+      "departments": [
+        { "name": "Female Representative", "leader": { "name": "MIRIAM ONESMO NOA", "phone": "0760 272 562" } }
+      ]
     }
   ],
   "news": [
