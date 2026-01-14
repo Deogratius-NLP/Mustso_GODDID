@@ -7,7 +7,7 @@
     { "id": 5, "name": "Hon. Venance", "title": "Permanent Secretary - Prime Minister's Office", "image": "/Venance.png" }
   ],
   "usrcLeaders": [
-    { "id": 1, "name": "Hon. EMMANUEL MWIRUMBE", "title": "Council Speaker" },
+    { "id": 1, "name": "Hon. EMMANUEL MWIRUMBE", "title": "Council Speaker", "image": "/Spika.jpg" },
     { "id": 2, "name": "Hon. JASMINE KOSHIMA", "title": "Deputy Speaker" },
     { "id": 3, "name": "Hon. Emmanuel Kileo", "title": "Secretary - USRC" },
     { "id": 4, "name": "Hon. DALTON ZACHARIA", "title": "Chairman - USRC" }
