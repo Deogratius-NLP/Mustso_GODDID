@@ -18,9 +18,13 @@ Official website for **MUSTSO** – built with modern web technologies and deplo
 │ ├── news1.png
 │ ├── news2.jpg
 │ └── ...
+|
+|
 ├── components
 │ └── NewsroomSection.tsx
+|
 └── data
+|
 └── Mustso.json
 
 ---
@@ -39,10 +43,12 @@ Add a new item under the `news` section:
   "description": "The MUSTSO general assembly brought together student leaders...",
   "image": "news1"
 }
+```
 
 ⚠️ The value of "image" must match the imported image name in the component.
 
-2️⃣ Add News Images
+
+2️⃣ Add NEWS Images 
 
 Place the image files in:
 
