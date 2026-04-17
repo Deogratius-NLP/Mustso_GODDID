@@ -148,7 +148,7 @@
       ],
       "leaders": [
         { "title": "Minister", "name": "GODWIN LUKIIO", "phone": "0622133114", "email": "godwin.info@mustso.ac.tz", "image": "/Lukio.JPG" },
-        { "title": "Deputy Minister 1", "name": "DERICK NDOSSY", "phone": "0658977842" },
+        { "title": "Deputy Minister", "name": "GRACA KILEVA", "phone": "0686238170" },
         { "title": "Secretary 1", "name": "ELIAH KEPHAS", "phone": "0627787633" },
         { "title": "Secretary 2", "name": "MINZA LUGATA", "phone": "0768044008" },
         { "title": "Secretary 3", "name": "DEOGRATIUS FAUSTINE", "phone": "0766710179" }
@@ -182,7 +182,6 @@
       "leaders": [
         { "title": "Minister", "name": "RAMADHANI KASEGEZYA", "phone": "0794391469", "image": "/Ramadhana.jpg" },
         { "title": "Deputy Minister 1", "name": "GREGORY KIMARIO", "phone": "0688695107" },
-        { "title": "Deputy Minister 2", "name": "GRACA KILEVA", "phone": "0686238170" },
         { "title": "Secretary 1", "name": "ERICA SHUMA", "phone": "0658786307" },
         { "title": "Secretary 2", "name": "ATHUMAN KUPAZA", "phone": "0613880717" }
       ]
