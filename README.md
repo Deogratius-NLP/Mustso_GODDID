@@ -15,17 +15,17 @@ Official website for **MUSTSO** – built with modern web technologies and deplo
 
 /src
 ├── assets
-│ ├── news1.png
-│ ├── news2.jpg
-│ └── ...
+│     ├── news1.png
+│     ├── news2.jpg
+│     └── ...
 |
 |
 ├── components
-│ └── NewsroomSection.tsx
+│      └── NewsroomSection.tsx
 |
 └── data
-|
-└── Mustso.json
+       |
+       └── Mustso.json
 
 ---
 ## 📰 How to Add News
